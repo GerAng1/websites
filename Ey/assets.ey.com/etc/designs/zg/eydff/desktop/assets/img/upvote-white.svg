@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="15px" viewBox="0 0 10 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Upvote</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="EY_In_Line_Upvote_01_Default_1024px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-800.000000, -107.000000)">
+        <g id="Upvote" transform="translate(137.000000, 62.000000)" fill="#ffffff">
+            <g transform="translate(591.000000, 30.000000)" id="Group">
+                <g transform="translate(16.000000, 9.000000)">
+                    <polygon id="Upvote" transform="translate(61.000000, 13.500000) rotate(-90.000000) translate(-61.000000, -13.500000) " points="62.325 9.675 65.3083333 12.6666667 53.5 12.6666667 53.5 14.3333333 65.3083333 14.3333333 62.3166667 17.325 63.5 18.5 68.5 13.5 63.5 8.5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

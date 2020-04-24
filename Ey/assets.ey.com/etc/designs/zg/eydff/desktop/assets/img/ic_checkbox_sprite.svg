@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!--Icons from directory ""-->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="96" viewBox="0 0 24 96">
+    <svg width="24" height="24" id="ic-check-box-active-black" y="0"><g fill="none" fill-rule="evenodd"><path fill="#FFF" stroke="#2E2E38" d="M.5.5h23v23H.5z"/><path fill="#2E2E38" fill-rule="nonzero" d="M20 7.262L9.029 18 4 13.078l1.29-1.261 3.739 3.65L18.71 6z"/></g></svg>
+    <svg width="24" height="24" id="ic-check-box-active-white" y="24"><g fill="none" fill-rule="evenodd"><path fill="#2e2e38" stroke="#FFF" d="M.5.5h23v23H.5z"/><path fill="#FFF" fill-rule="nonzero" d="M20 7.262L9.029 18 4 13.078l1.29-1.261 3.739 3.65L18.71 6z"/></g></svg>
+    <svg width="24" height="24" id="ic-check-box-black" y="48"><path fill="#FFF" fill-rule="evenodd" stroke="#2E2E38" d="M.5.5h23v23H.5z"/></svg>
+    <svg width="24" height="24" id="ic-check-box-white" y="72"><path fill="#2e2e38" fill-rule="evenodd" stroke="#FFF" d="M.5.5h23v23H.5z"/></svg>
+</svg>

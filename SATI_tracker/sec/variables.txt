@@ -1,0 +1,40 @@
+Table Usuario:
+
+matricula $matr
+contrasena $contr
+nombre $nombr
+apellido $apel
+rol (char) $rol   (M[esa] = 1; A[ctivo] = 2; ERROR = 3)
+correo_personal
+telefono
+desempeno
+
+
+
+Variables de _SESSION
+
+fail_login_type
+nombre
+matr
+rol
+mensaje
+
+INSERT INTO proyecto ('id','nombre','descripcion', 'fecha') VALUES(NULL, ?,?,?)
+fecha formato = AAAA-MM-DD
+
+Variables proyecto:
+
+nombre nombrproy
+descripcion descrproy
+fecha_entrega fechaproy
+
+
+$stmt_VARIABLE = $mysqli->prepare("[INSERTE AQUI QUERY]");
+$stmt_VARIABLE->bind_param('s', $VARIABLE); (opcional)
+$stmt_VARIABLE->execute();
+$row_variable = $stmt_VARIABLE->get_result()->fetch_assoc();
+
+
+Queries
+
+UPDATE `sudo_tracker`.`proyecto` SET `Completado` = '1' WHERE (`PROYECTO_ID` = '1');

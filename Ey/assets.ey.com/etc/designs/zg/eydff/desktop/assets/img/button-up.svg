@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Up Button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="EY_Index_Feature_Carousel_State_1_1440px-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-71.000000, -722.000000)">
+        <g id="Up-Button" transform="translate(71.000000, 722.000000)">
+            <g id="Icon-24px">
+                <polygon id="Shape" fill="#24242E" points="0 0 44 0 44 44 0 44"></polygon>
+                <polygon id="Shape" fill="#FFFFFF" points="15.88 26.5466667 22 20.44 28.12 26.5466667 30 24.6666667 22 16.6666667 14 24.6666667"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

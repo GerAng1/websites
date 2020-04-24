@@ -1,0 +1,1 @@
+String.prototype.startsWith||(String.prototype.startsWith=function(a,b){return this.substr(!b||0>b?0:+b,a.length)===a});(function(a){a.documentElement.className=a.documentElement.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document);
