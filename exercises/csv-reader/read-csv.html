@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Site che legge CSV">
+    <meta name="author" content="Gerardo Anglada, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+
+    <meta property="og:title" content="CSV Reader per ISPC">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.algoalazar.com/funcionara/">
+    <meta property="og:image" content="./assets/img/IPSCCNR-logo.png">
+
+    <title>ISPC | CSV Reader</title>
+    <link rel="shortcut icon" href="./assets/img/ISPC-logo.ico" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+    <div class="col-lg-8 mx-auto p-3 py-md-5">
+      <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <a href="" class="d-flex align-items-center text-dark text-decoration-none">
+          <span class="fs-4">Test javascript program</span>
+          <div class="main-logo">
+            <img src="./assets/img/IPSCCNR-logo.png" width="50%" class="img-fluid float-end" alt="ISPC CNR Logo">
+          </div>
+        </a>
+      </header>
+
+      <main>
+        <h1>CSV Reader</h1>
+        <p class="fs-5 col-md-8">Seleziona un file CSV e lo leggeremo e lo convertiremo in una tabella.</p>
+
+        <form id="myForm"> <!-- I will use ID name in .js file -->
+          <div class="row g-5">
+            <div class="col-md-6">
+              <div class="mb-5 text-center">
+                <input class="btn-lg" type="file" id="csvFile" accept=".csv" /> <!-- I will use ID name in .js file -->
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-5 text-center">
+                <input type="submit" class="btn btn-primary btn-lg px-4" id="upload" value="Caricare" />
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <hr class="col-3 col-md-2 mb-5">
+
+        <div class="">
+          <table class="table table-striped table-hover">
+            <!-- The output will appear here -->
+          </table>
+        </div>
+      </main>
+
+      <footer class="pt-5 my-5 text-muted border-top">
+        Ad uso esclusivo del CNR | 2022
+      </footer>
+    </div>
+
+    <!-- Il mio js file -->
+    <script src="read_csv.js"></script>
+
+    <!-- Per avere più funzionalita di js -->
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+  </html>
