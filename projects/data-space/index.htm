@@ -1,0 +1,605 @@
+<!-- Colors:
+Data Space Blue: #213B55
+Data Space Blue Lighter: #2F4867
+Data Space Blue Darker: #1E2D40 -->
+
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ISPC's Data Space Home Page">
+        <meta name="author" content="Arches (Enzo Coccca & Gerardo Anglada)">
+
+        <title>ISPC Data Space | Heritage Data Management</title>
+        <link rel="shortcut icon" href="media/img/logos/favicon_dataspace.svg" />
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        <link rel="stylesheet" href="media/css/index.css">
+    </head>
+
+    <body data-bs-spy="scroll" data-bs-target="#scrollspy-list" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark py-0 px-4 sticky-top" style="background-color:#213B55;">
+            <div class="container-fluid">
+                <a class="navbar-brand mx-4 fs-4 fw-semibold align-start" href="#">
+                    <img src="media/img/logos/dataspace_icon.png" alt="ISPC Logo" width="40" height="40" class="d-inline align-top">
+                    Data Space | ISPC
+                </a>
+
+                <div class="collapse navbar-collapse" id="navbarISPC">
+                    <div class="navbar-nav">
+                        <a class="nav-link fw-light py-3" href="#what-is">What is it?</a>
+                        <a class="nav-link fw-light py-3 active" href="#">Search</a>
+                        <a class="nav-link fw-light py-3 active" href="#">Resource Manager</a>
+                    </div>
+
+                </div>
+                <span class="navbar-nav">
+                  <a class="text-light nav-link py-lg-3" href="#">Welcome, admin!</a>
+                  <a class="nav-link py-lg-3" href="#" style="color: #13ce67">Log out</a>
+                </span>
+
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarISPC" aria-controls="navbarISPC" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+
+        <!-- Scrollspy -->
+        <div id="scrollspy-list" class="scrollspy-nav d-none d-md-block">
+          <ul class="scrollspy-list text-center">
+            <li class="active">
+                <a class="scrollspy-link text-decoration-none" href="#carouselDataSpace" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-bs-content="Top">
+                  <i class="bi-text-indent-left scrollspy-icon"></i>
+                </a>
+            </li>
+
+            <li>
+                <a class="scrollspy-link text-decoration-none" href="#what-is" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-bs-content="What is it?">
+                  <i class="bi-text-indent-left scrollspy-icon"></i>
+                </a>
+            </li>
+
+            <li>
+                <a class="scrollspy-link text-decoration-none" href="#resources-services" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-bs-content="Resources">
+                  <i class="bi-text-indent-left scrollspy-icon"></i>
+                </a>
+            </li>
+
+            <li>
+                <a class="scrollspy-link text-decoration-none" href="#latest-published" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-bs-content="Latest">
+                  <i class="bi-text-indent-left scrollspy-icon"></i>
+                </a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- End Scrollspy -->
+
+
+        <!-- Carousel -->
+        <div id="carouselDataSpace" class="carousel slide carousel-fade" style="height: 90vh;" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-indicators" style="margin-bottom: 3rem;">
+                <button type="button" data-bs-target="#carouselDataSpace" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselDataSpace" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselDataSpace" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselDataSpace" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselDataSpace" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner h-100">
+                <div class="carousel-item active h-100" >
+                    <img src="media/img/landing/Musei_Vaticani.jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
+
+                    <div class="image-gradient"></div>
+
+                    <div class="carousel-caption text-start mb-5 pb-5">
+                        <h1 class="fw-lighter" style="text-shadow: 0.2px 0.2px 2px #000;">Diagnostic Investigation Datasets</h1>
+                        <h3 class="fw-light" style="text-shadow: 0.2px 0.2px 2px #000;">The study of a Mesoamerican manuscript</h3>
+                    </div>
+                </div>
+                <div class="carousel-item h-100">
+                     <img src="media/img/landing/QB2006_falso colore.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
+
+                    <div class="image-gradient"></div>
+
+                    <div class="carousel-caption  text-start mb-5 pb-5">
+                      <h1 class="fw-lighter" style="text-shadow: 0.2px 0.2px 2px #000;">Digital Archaeological Maps for Ancient Topography</h1>
+                      <h3 class="fw-light" style="text-shadow: 0.2px 0.2px 2px #000;">Hatra (Iraq) in a pan-sharpened false-colored infrared image</h3>
+                    </div>
+                </div>
+                <div class="carousel-item h-100">
+                     <img src="media/img/landing/Epigrafe.JPG" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
+
+                    <div class="image-gradient"></div>
+
+                    <div class="carousel-caption  text-start mb-5 pb-5">
+                        <h1 class="fw-lighter" style="text-shadow: 0.2px 0.2px 2px #000;">Support Tools for Heritage Databases</h1>
+                        <h3 class="fw-light" style="text-shadow: 0.2px 0.2px 2px #000;">The Digital Archive for the study of pre-islamic arabian inscriptions</h3>
+                    </div>
+                </div>
+                <div class="carousel-item h-100">
+                     <img src="media/img/landing/DHiLab_ISPC_enhancement.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
+
+                    <div class="image-gradient"></div>
+
+                    <div class="carousel-caption  text-start mb-5 pb-5">
+                      <h1 class="fw-lighter" style="text-shadow: 0.2px 0.2px 2px #000;">Innovative Services for the immersive inspection of Heritage data</h1>
+                      <h3 class="fw-light" style="text-shadow: 0.2px 0.2px 2px #000;">Aton framework example</h3>
+                    </div>
+                </div>
+                <div class="carousel-item  h-100">
+                     <img src="media/img/landing/Alghero_2017.jpeg" class="d-block w-100 h-100" style="object-fit: cover;" alt="...">
+
+                    <div class="image-gradient"></div>
+
+                    <div class="carousel-caption  text-start mb-5 pb-5">
+                      <h1 class="fw-lighter" style="text-shadow: 0.2px 0.2px 2px #000;">Digital Training Resources for Heritage Sciences</h1>
+                      <h3 class="fw-light" style="text-shadow: 0.2px 0.2px 2px #000;">Alghero training camp</h3>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselDataSpace" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselDataSpace" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="down-button">
+            <a href="#what-is">
+                <i class="bi-caret-down-fill down-button-icon"></i>
+            </a>
+        </div>
+        <!-- End Carousel -->
+
+        <!-- What is it? -->
+        <div class="container px-5 pt-5" id="what-is">
+            <div class="row px-5">
+
+                <div class="col-12 col-md-6 col-xl-4 my-auto">
+                    <p>Data Space is a platform for the sharing, accessing, and
+                      long-term conservation of data produced by the Institute of
+                      Cultural Heritage Sciences. It allows access to innovative
+                      digital tools & services to increase the knowledge and enhance
+                      the conservation of the Cultural Heritage in an
+                      interdisciplinary perspective.
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-6 col-xl-8">
+                    <div class="ratio ratio-16x9 border">
+                        <video poster="media/img/landing/bozza_cover.jpg" controls autoplay muted>
+                            <source src="{% static 'img/landing/bozza_video.mp4' %}" type="video/mp4">
+                        </video>
+                    </div>
+                    <hr class="card-inline-separator">
+                    <p class="text-end lead">ISPC Data Space | Presentation Video</p>
+                </div>
+
+            </div>
+        </div>
+        <!-- End What is it? -->
+
+        <!-- Mini Section -->
+        <div class="container-fluid">
+            <div class="row py-5"></div>
+
+            <div class="row px-5" style="margin: -75px 100px;">
+                <div class="col my-2">
+                    <div class="resource-card mx-auto" style="background: #0A3E7D;">
+                        <a class="text-center text-decoration-none" href="#">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/pvbutfdk.json"
+                                trigger="morph"
+                                colors="primary:#ffffff"
+                                class="resource-icon">
+                            </lord-icon>
+                            <p class="text-light fs-6 fw-semibold mb-3">Researchers</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col my-2">
+                    <div class="resource-card mx-auto" style="background: #6A7D10;">
+                        <a class="text-center text-decoration-none" href="#">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/sygggnra.json"
+                                trigger="morph"
+                                colors="primary:#ffffff"
+                                class="resource-icon">
+                            </lord-icon>
+                            <p class="text-light fs-6 fw-semibold mb-3">Institutions</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col my-2">
+                    <div class="resource-card mx-auto" style="background: #7D5100;">
+                        <a class="text-center text-decoration-none" href="#">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/stxtcyyo.json"
+                                trigger="morph"
+                                colors="primary:#ffffff"
+                                class="resource-icon">
+                            </lord-icon>
+                            <p class="text-light fs-6 fw-semibold mb-3">Students</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resources-services" class="row py-5 bg-light"></div>
+        </div>
+        <!-- End Mini Section -->
+
+        <!-- Resources & Services -->
+        <div class="container-fluid px-5 pb-5 bg-light">
+            <h1 class="display-6 lead text-center">Resources & Services</h1>
+            <p class="text-muted text-center px-5">Access and use the resources and services for heritage science researchers made available through our catalogues.</p>
+
+            <!-- Visible only on small screens -->
+            <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xxl-6 px-5 gy-3"> -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xxl-6 px-5 gy-3 d-md-none">
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="media/img/icons/research_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Research Areas</h4>
+                            <h4 class="card-subtitle mb-2 text-muted">21</h4>
+                            <p class="card-text">A global overview of the. Etiam vitae elementum orci.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="media/img/icons/training_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Training Resources</h4>
+                            <h4 class="card-subtitle mb-2 text-muted">48</h4>
+                            <p class="card-text">Educational resources in the broad field of the Heritage Science domain.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="media/img/icons/vres_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">VREs</h4>
+                            <h4 class="card-subtitle mb-2 text-muted">84</h4>
+                            <p class="card-text">Innovative Virtual Research Environments developed to serve modern Heritage Science needs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="media/img/icons/datasets_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Datasets</h4>
+                            <h4 class="card-subtitle mb-2 text-muted">213</h4>
+                            <p class="card-text">Main point of access for searching and browsing datasets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="media/img/icons/services_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Services</h4>
+                            <h4 class="card-subtitle mb-2 text-muted">36</h4>
+                            <p class="card-text">Main point of access for innovative services in Heritage Science discipline.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="media/img/icons/workflows_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Workflows</h4>
+                            <h4 class="card-subtitle mb-2 text-muted">112</h4>
+                            <p class="card-text">Practical solutions for the formalization and description of research workflows.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Carousel Visible only on larger screens -->
+            <!-- <div class="row px-lg-5 mt-4 mx-lg-5 d-none"> -->
+            <div class="row px-lg-5 mt-4 mx-lg-5 d-none d-md-block">
+                <div class="carousel" data-flickity='{ "autoPlay": true, "wrapAround": true, "groupCells": 2}'>
+
+                    <div class="carousel-cell">
+                        <div class="card mx-2" style="min-height: 250px;">
+                            <img src="media/img/icons/research_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Research Areas</h4>
+                                <h4 class="card-subtitle mb-2 text-muted">21</h4>
+                                <p class="card-text">A global overview of the. Etiam vitae elementum orci.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-cell">
+                        <div class="card mx-2" style="min-height: 250px;">
+                            <img src="media/img/icons/training_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Training Resources</h4>
+                                <h4 class="card-subtitle mb-2 text-muted">48</h4>
+                                <p class="card-text">Educational resources in the broad field of the Heritage Science domain.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-cell">
+                        <div class="card mx-2" style="min-height: 250px;">
+                            <img src="media/img/icons/vres_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">VREs</h4>
+                                <h4 class="card-subtitle mb-2 text-muted">84</h4>
+                                <p class="card-text">Innovative Virtual Research Environments developed to serve modern Heritage Science needs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-cell">
+                        <div class="card mx-2" style="min-height: 250px;">
+                            <img src="media/img/icons/datasets_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Datasets</h4>
+                                <h4 class="card-subtitle mb-2 text-muted">213</h4>
+                                <p class="card-text">Main point of access for searching and browsing datasets.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-cell">
+                        <div class="card mx-2" style="min-height: 250px;">
+                            <img src="media/img/icons/services_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Services</h4>
+                                <h4 class="card-subtitle mb-2 text-muted">36</h4>
+                                <p class="card-text">Main point of access for innovative services in Heritage Science discipline.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-cell">
+                        <div class="card mx-2" style="min-height: 250px;">
+                            <img src="media/img/icons/workflows_icon.svg" class="card-img-top mx-auto mt-3" style="height: 55px; width:55px;" alt="...">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Workflows</h4>
+                                <h4 class="card-subtitle mb-2 text-muted">112</h4>
+                                <p class="card-text">Practical solutions for the formalization and description of research workflows.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- End Resources & Services -->
+
+
+        <!-- Latest Published -->
+        <div id="latest-published" class="container pt-5 px-5">
+            <h1 class="display-6 lead mb-4 text-center">Latest Published Resources</h1>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
+                <div class="col my-2">
+
+                  <div class="card text-center h-100">
+                      <div class="card-header">
+                          Data Space ISPC | CNR
+                      </div>
+                      <div class="card-body">
+                          <a href="#" target="_blank" class="text-reset text-decoration-none">
+                              <img class="models-image mb-3" src="media/img/landing/MOLAB_Campagna.jpeg">
+                              <p class="card-text">MOLAB, National Gallery of Umbria</p>
+                          </a>
+                      </div>
+                      <div class="card-footer text-muted">
+                          2 days ago
+                      </div>
+                  </div>
+
+                </div>
+                <div class="col my-2">
+
+                  <div class="card text-center h-100">
+                      <div class="card-header">
+                          Aton ISPC | CNR
+                      </div>
+                      <div class="card-body">
+                          <a href="https://aton.ispc.cnr.it/s/vhlab/sid-ac9lddw5w" target="_blank" class="text-reset text-decoration-none">
+                              <img class="models-image mb-3" src="https://aton.ispc.cnr.it/scenes/vhlab/sid-ac9lddw5w/cover.png">
+                              <p class="card-text">Tomb of the Reliefs, Cerveteri</p>
+                          </a>
+                      </div>
+                      <div class="card-footer text-muted">
+                          3 days ago
+                      </div>
+                  </div>
+
+                </div>
+                <div class="col my-2">
+
+                  <div class="card text-center h-100">
+                      <div class="card-header">
+                          Data Space ISPC | CNR
+                      </div>
+                      <div class="card-body">
+                          <a href="#" target="_blank" class="text-reset text-decoration-none">
+                              <img class="models-image mb-3" src="media/img\landing\IDEHA_favignana.png">
+                              <p class="card-text">Florio Ex-Factory of the Tonnare</p>
+                          </a>
+                      </div>
+                      <div class="card-footer text-muted">
+                          2 days ago
+                      </div>
+                  </div>
+
+                </div>
+                <div class="col my-2">
+
+                  <div class="card text-center h-100">
+                      <div class="card-header">
+                          Data Space ISPC | CNR
+                      </div>
+                      <div class="card-body">
+                          <a href="http://dasi.cnr.it/index.php?id=dasi_prj_epi&prjId=1&corId=0&colId=0&navId=502577838&recId=742" target="_blank" class="text-reset text-decoration-none">
+                              <img class="models-image mb-3" src="media/img\landing\Epigrafe_MSM149.jpeg">
+                              <p class="card-text">Epigraph MṢM 149</p>
+                          </a>
+                      </div>
+                      <div class="card-footer text-muted">
+                          2 days ago
+                      </div>
+                  </div>
+
+                </div>
+                <div class="col my-2">
+
+                  <div class="card text-center h-100">
+                      <div class="card-header">
+                          Data Space ISPC | CNR
+                      </div>
+                      <div class="card-body">
+                          <a href="#" target="_blank" class="text-reset text-decoration-none">
+                              <img class="models-image mb-3" src="media/img\landing\MOLAB_Total_reflection_mid.jpeg">
+                              <p class="card-text">MOLAB, Oslo, Total reflection mid FTIR</p>
+                          </a>
+                      </div>
+                      <div class="card-footer text-muted">
+                          2 days ago
+                      </div>
+                  </div>
+
+                </div>
+                <div class="col my-2">
+
+                  <div class="card text-center h-100">
+                      <div class="card-header">
+                          Aton ISPC | CNR
+                      </div>
+                      <div class="card-body">
+                          <a href="https://aton.ispc.cnr.it/s/vhlab/20220605-jsdyyi50z" target="_blank" class="text-reset text-decoration-none">
+                              <img class="models-image mb-3" src="https://aton.ispc.cnr.it/scenes/vhlab/20220605-jsdyyi50z/cover.png">
+                              <p class="card-text">Bust of Chrysippus</p>
+                          </a>
+                      </div>
+                      <div class="card-footer text-muted">
+                          2 days ago
+                      </div>
+                  </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- End Latest Published -->
+
+
+        <!-- Footer -->
+        <div class="container-fluid mt-5 px-5 text-light footer-text fw-lighter" style="background: #213B55">
+            <footer class="pt-4 pb-1 px-5">
+                <h6 class="mb-3">Institute of Heritage Science</h6>
+                <div class="row mb-2">
+                    <div class="col-4 col-md-6">
+                        <h6>Find Us</h6>
+                        <p class="pb-0 mb-0">Via Cardinale Guglielmo Sanfelice 8, 80134 Napoli (NA), IT</p>
+                        <p>Tel: 081-247-0966</p>
+
+                    </div>
+
+                    <div class="col-4 col-md-3 px-5">
+                      <h6>Useful Links</h6>
+                      <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="p-0 link-light">About Data Space</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="p-0 link-light">Contact Us</a></li>
+                      </ul>
+                    </div>
+
+                  <div class="col-4 col-md-3 px-5">
+                    <h6>Disclaimers & Agreements</h6>
+                    <ul class="nav flex-column">
+                      <li class="nav-item mb-2"><a href="#" class="p-0 link-light">Cookies Policy</a></li>
+                      <li class="nav-item mb-2"><a href="#" class="p-0 link-light">Privacy Policy</a></li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              <div class="row justify-content-between pt-2 mt-2 border-top" style="color: #91A5CF;">
+                  <div class="col-5 mt-1">
+                      <span>
+                          <a class="text-reset" href="http://www.cnr.it/">National Research Council</a> –
+                          <a class="text-reset" href="https://www.ispc.cnr.it/">Institute of Heritage Science</a>
+                      </span>
+                  </div>
+
+                  <div class="col-4 d-flex align-items-center justify-content-center">
+                      <span>
+                        <img src="media/img/logos/dataspace_icon.svg" class="" style="height: 30px" alt="Data Space Icon">
+                        2022 &copy; All Rights Reserved
+                      </span>
+                  </div>
+
+                  <div class="col-3 text-end mt-1">
+                      <a class="text-reset" href="#">Powered by Arches</a>
+                  </div>
+
+              </div>
+            </footer>
+        </div>
+        <!-- End Footer -->
+
+
+
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+
+        <script type="text/javascript">
+
+            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+            var elem = document.querySelector('.main-carousel');
+            var flkty = new Flickity( elem, {
+              // options
+              cellAlign: 'left',
+              contain: true
+            });
+
+            // element argument can be a selector string
+            //   for an individual element
+            var flkty = new Flickity( '.main-carousel', {
+              // options
+            });
+
+        </script>
+        <!-- End Scripts -->
+    </body>
+
+</html>
