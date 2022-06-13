@@ -1,2 +1,8 @@
 # Ignore Mac system files
 .DS_store
+
+# Ignore venv
+.envaldea
+
+# Py Cahce
+__pycache__
