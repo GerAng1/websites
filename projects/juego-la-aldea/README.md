@@ -27,23 +27,34 @@ Handles receiving the quantity of players, characters that'll play, assignment o
 
 - **Models**
     - Character
-        - Description (CharField max_length = 1000?)
-        - Abilities (List)
-        - Limitations
-        - Extra notes
+        - name = models.CharField('Name', max_length=100)
+        - descr = models.TextField('Description')
+        - faction = models.ForeignKey('Faction', Faction, on_delete=models.CASCADE)
+        - abils = models.ManyToManyField('Abilities', Ability)
+        - limits = models.TextField('Limitations')
+        - xtras = model.TextField('Extras')
+        - rank = model.IntegerField('Rank', default=1)
 
     - Player
-        - Name
-        - Character (foreignKey)
+        - name = models.CharField('Name', max_length=100)
+        - character = models.ForeignKey('Character', Character, on_delete=models.CASCADE)
+        - alive = models.BooleanField('Alive', default=True)
 
-    - Abilities ***?***
-        - Character (foreignKey)
+    - Ability
+        - name = models.CharField('Name', max_length=100)
+        - descr = models.TextField('Description')
+        - xtras = model.TextField('Extras')
 
-    - Resources/Objects
-        - Brief Description
+    - Faction
+        - name = models.CharField('Name', max_length=100)
+        - descr = models.TextField('Description')
+        - obj = model.TextField('Objective')
+
 
 - **Views/Templates**
     - index.html
+        - See options new game or read docs
+    - setup.html
         - Add players & characters
     - recap.html
         - View inserted info.
