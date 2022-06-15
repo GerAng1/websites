@@ -33,13 +33,14 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'assignor.apps.AssignorConfig',
 
-    'setuper.apps.SetupperConfig',
+    'setupper.apps.SetupperConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [
