@@ -1,0 +1,58 @@
+/* no circle */
+.flickity-button {
+  background: transparent;
+}
+
+.flickity-button:hover {
+  background: transparent;
+}
+
+/* big previous & next buttons */
+.flickity-prev-next-button {
+  width: 100px;
+  height: 100px;
+}
+
+/* icon color */
+.flickity-button-icon {
+  fill: white;
+}
+
+.flickity-button-icon:hover {
+  fill: red;
+}
+
+/* hide disabled button */
+.flickity-button:disabled {
+  display: none;
+}
+
+/* position dots up a bit */
+.flickity-page-dots {
+  position: sticky;
+  bottom: -22px;
+}
+/* dots are lines */
+.flickity-page-dots .dot {
+  height: 4px;
+  width: 40px;
+  margin: 0;
+  border-radius: 0;
+}
+
+.carousel-cell {
+  width: 50%;
+  height: calc(70vh - 100px);
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.carousel-cell img {
+  object-fit: cover;
+  height: -webkit-fill-available;
+}
+
+.carousel-cell button {
+  position: absolute;
+  bottom: 36px;
+}

@@ -12,4 +12,8 @@ def setup(request):
 
 
 def docs(request):
-    return HttpResponse("You're reading the DOCS.")
+    return render(request, 'setupper/docs.html')
+
+
+def detail(request, object_id):
+    return HttpResponse("You're reading the Detail.")
