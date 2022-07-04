@@ -1,8 +1,11 @@
 # Ignore Mac system files
 .DS_store
 
+# Py Cahce
+__pycache__
+
+# For DJANGO PROJECT
 # Ignore venv
 .envaldea
 
-# Py Cahce
-__pycache__
+projects/juego-la-aldea/aldeasite/aldeasite/settings.py
