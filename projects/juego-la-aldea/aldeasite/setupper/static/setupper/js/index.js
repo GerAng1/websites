@@ -12,8 +12,8 @@ let flkty = new Flickity( elem, {
 const themeSelector = (theme, btn) => {
     let selected = false;
 
-    for (let i = 0; i < 3; i++) { // Currently 3 buttons (themes)
-        let currentBtn = document.getElementById("themeBtn" + (i + 1));
+    for (let i = 1; i < 4; i++) { // Currently 3 buttons (themes)
+        let currentBtn = document.getElementById("themeBtn" + i);
 
         if (currentBtn.classList.contains("active")) {
             selected = true;
