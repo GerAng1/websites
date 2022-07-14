@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 
+from .models import Faction
+
 
 # Create your views here.
 def index(request):
@@ -12,8 +14,13 @@ def setup(request):
 
 
 def docs(request):
-    return render(request, 'setupper/docs.html')
+    return render(request, 'setupper/maindocs.html')
 
 
-def detail(request, object_id):
-    return HttpResponse("You're reading the Detail.")
+def details(request):
+    return HttpResponse("Here will bee the deetz.")
+
+
+def factions(request):
+    table = (Faction.objects.all())
+    return render(request, 'setupper/docs.html', {'table': table})
