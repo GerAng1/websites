@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 
-{% translate "The Village" as game_name %}
+{% translate "La Aldea" as game_name %}
 
 <!doctype html>
 <html lang="en">
@@ -27,38 +27,48 @@
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <a href="{% url 'setupper:index' %}" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
                           <img src="{% static 'setupper/logos/villagewhite.png'%}" width="55" height="55" alt="">
-                          <h1 class="ms-4 mb-0 display-6 fs-3">{{ game_name }}</h1>
+                          <h1 class="ms-4 mb-0 display-6 fs-3">{{ game_name }} | {% block page %} {% endblock %}</h1>
                         </a>
 
-                        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                        <ul class="nav col-auto my-2 justify-content-center my-md-0 text-small">
                             <li>
-                                <a href="{% url 'setupper:index' %}" class="nav-link text-secondary">
+                                {% if main_script == 'index' %}
+                                  <a href="{% url 'setupper:index' %}" class="nav-link text-secondary">
+                                {% else %}
+                                  <a href="{% url 'setupper:index' %}" class="nav-link text-white">
+                                {% endif %}
                                   <i class="material-symbols-outlined d-block text-center">home</i>
-                                  {% translate "Home" %}
+                                  {% translate "Nuevo Juego" %}
                                 </a>
                             </li>
                             <li>
-                                <a href="{% url 'setupper:docs' %}" class="nav-link text-white">
+                                {% if main_script == 'rules' %}
+                                  <a href="{% url 'setupper:rules' %}" class="nav-link text-secondary">
+                                {% else %}
+                                  <a href="{% url 'setupper:rules' %}" class="nav-link text-white">
+                                {% endif %}
                                   <i class="material-symbols-outlined d-block text-center">gavel</i>
-                                  {% translate "Rules" %}
+                                  {% translate "Las Reglas" %}
                                 </a>
                             </li>
                             <li>
-                                <a href="{% url 'setupper:details' %}" class="nav-link text-white">
-                                  <img class="d-block mx-auto" src="{% static 'setupper/logos/villagewhite.png'%}" width="24" height="24" alt="">
-                                  {{ game_name }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{% url 'setupper:factions' %}" class="nav-link text-white">
+                                {% if main_script == 'factions' %}
+                                  <a href="{% url 'setupper:factions' %}" class="nav-link text-secondary">
+                                {% else %}
+                                  <a href="{% url 'setupper:factions' %}" class="nav-link text-white">
+                                {% endif %}
                                   <i class="material-symbols-outlined d-block text-center">groups_2</i>
-                                  {% translate "The Factions" %}
+                                  {% translate "Las Facciones" %}
                                 </a>
                             </li>
                             <li>
-                                <a href="{% url 'setupper:details' %}" class="nav-link text-white">
+                                {% if main_script == 'roles' %}
+                                  <a href="{% url 'setupper:roles' %}" class="nav-link text-secondary">
+                                {% else %}
+                                  <a href="{% url 'setupper:roles' %}" class="nav-link text-white">
+                                {% endif %}
                                   <i class="material-symbols-outlined d-block text-center">badge</i>
-                                  {% translate "The Roles" %}
+                                  {% translate "Los Roles" %}
                                 </a>
                             </li>
                         </ul>
@@ -68,17 +78,18 @@
             <div class="px-3 py-2 border-bottom mb-3">
               <div class="container d-flex flex-wrap justify-content-center">
                 <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
-                  <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                  <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
                 </form>
 
                 <div class="text-end">
-                  <button type="button" class="btn btn-light text-dark me-2">{% translate "Login" %}</button>
-                  <button type="button" class="btn btn-primary">{% translate "Sign-up" %}</button>
+                  <button type="button" class="btn btn-light text-dark me-2">{% translate "Iniciar Sesión" %}</button>
+                  <button type="button" class="btn btn-primary">{% translate "Crear Cuenta" %}</button>
                 </div>
               </div>
             </div>
         </header>
 
+        {% block sidebar %} {% endblock %}
         {% block content %} {% endblock %}
 
         <!-- Footer -->
@@ -88,23 +99,23 @@
                 <h6 class="mb-3 display-6 fs-5">{{ game_name }}</h6>
                 <div class="row mb-2">
                     <div class="col-3 col-md-6">
-                        <h6>{% translate "Find Us" %}</h6>
-                        <a class="link-light" href="https://github.com/GerAng1" target="_blank">{% translate "Github Account" %}</a>
+                        <h6>{% translate "Encuéntranos" %}</h6>
+                        <a class="link-light" href="https://github.com/GerAng1" target="_blank">{% translate "Github" %}</a>
                     </div>
 
                     <div class="col-5 col-md-3">
-                        <h6>{% translate "Useful Links" %}</h6>
+                        <h6>{% translate "Ligas Útiles" %}</h6>
                         <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="link-light">{% translate "About" %} {{ game_name }}</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="link-light">{% translate "Contact Us" %}</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="link-light">{% translate "Sobre" %} {{ game_name }}</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="link-light">{% translate "Contáctanos" %}</a></li>
                         </ul>
                     </div>
 
                   <div class="col-4 col-md-3">
-                    <h6>{% translate "Disclaimers & Agreements" %}</h6>
+                    <h6>{% translate "Acuerdos" %}</h6>
                     <ul class="nav flex-column">
-                      <li class="nav-item mb-2"><a href="#" class="link-light">{% translate "Cookies Policy" %}</a></li>
-                      <li class="nav-item mb-2"><a href="#" class="link-light">{% translate "Privacy Policy" %}</a></li>
+                      <li class="nav-item mb-2"><a href="#" class="link-light">{% translate "Política de Cookies" %}</a></li>
+                      <li class="nav-item mb-2"><a href="#" class="link-light">{% translate "Política de Privacidad" %}</a></li>
                     </ul>
                   </div>
 
@@ -114,7 +125,7 @@
 
                 <div class="row pt-2 ustify-content-between border-top">
                     <div class="col-4">
-                        <span>2022 &copy; {% translate "All Rights Reserved" %}</span>
+                        <span>2022 &copy; {% translate "Todos los derechos reservados" %}</span>
                     </div>
 
                     <div class="col-4 d-flex align-items-center justify-content-center">
@@ -124,7 +135,7 @@
                     </div>
 
                     <div class="col-4 text-end">
-                        <a class="link-light" href="https://www.djangoproject.com" target="_blank">{% translate "Created using Django" %}</a>
+                        <a class="link-light" href="https://www.djangoproject.com" target="_blank">{% translate "Creado usando Django" %}</a>
                     </div>
                 </div>
             </footer>

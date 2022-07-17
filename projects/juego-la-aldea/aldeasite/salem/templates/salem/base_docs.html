@@ -1,0 +1,68 @@
+{% extends "salem/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% translate "La Aldea" as game_name %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'salem/css/docs.css' %}">
+{% endblock %}
+
+{% block page %}{% translate "Docs" %}{% endblock %}
+
+{% block content %}
+    <div class="sidebar">
+        <ul class="list-unstyled">
+
+          <li>
+
+          <!-- FOR LOOP HERE -->
+          {% if factions %}
+              {% if main_script == 'factions' %}
+                  <a class="ps-3 active" href="{% url 'salem:docs' 'factions' %}">{% translate "Facciones" %}</a>
+              {% else %}
+                  <a class="ps-3" href="{% url 'salem:docs' 'factions' %}">{% translate "Facciones" %}</a>
+              {% endif %}
+              <ul class="list-unstyled small">
+
+                  {% for faction in factions %}
+                  <li><a class="ps-5" href="{% url 'salem:detail' object_model='Faction' object_pk=faction.name %}">{{ faction.name }}</a></li>
+                  {% endfor %}
+
+              </ul>
+
+              {% if main_script == 'roles' %}
+                  <a class="ps-3 active" href="{% url 'salem:docs' 'roles' %}">{% translate "Roles" %}</a>
+              {% else %}
+                  <a class="ps-3" href="{% url 'salem:docs' 'roles' %}">{% translate "Roles" %}</a>
+              {% endif %}
+              <ul class="list-unstyled small">
+
+                  {% for role in roles %}
+                  <li><a class="ps-5" href="{% url 'salem:detail' object_model='Role' object_pk=role.name %}">{{ role.name }}</a></li>
+                  {% endfor %}
+
+              </ul>
+
+          {% else %}
+              <ul>
+                  <p>NOT FOUND.</p>
+              </ul>
+          {% endif %}
+
+          </li>
+
+        </ul>
+    </div>
+
+    <div class="content">
+
+      {% block container %}
+
+          <h1>This is written in the base_docs.html</h1>
+
+      {% endblock %}
+    </div>
+{% endblock %}
+
+{% block footer %} {% endblock %}
