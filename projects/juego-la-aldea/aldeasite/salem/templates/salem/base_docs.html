@@ -18,31 +18,35 @@
 
           <!-- FOR LOOP HERE -->
           {% if factions %}
-              {% if main_script == 'factions' %}
-                  <a class="ps-3 active" href="{% url 'salem:docs' 'factions' %}">{% translate "Facciones" %}</a>
-              {% else %}
-                  <a class="ps-3" href="{% url 'salem:docs' 'factions' %}">{% translate "Facciones" %}</a>
-              {% endif %}
+              <a class="ps-3 lead fs-5" href="{% url 'salem:docs' 'factions' %}">{% translate "Facciones + Roles" %}</a>
+
               <ul class="list-unstyled small">
 
                   {% for faction in factions %}
-                  <li><a class="ps-5" href="{% url 'salem:detail' object_model='Faction' object_pk=faction.name %}">{{ faction.name }}</a></li>
+                      {% if object_model == 'Faction' and faction.id == object.id %}
+                          <li><a class="ps-4 active fs-5" href="{% url 'salem:detail' object_model='Faction' object_pk=faction.id %}">{{ faction.name }}</a></li>
+                      {% else %}
+                          <li><a class="ps-4 fs-5" href="{% url 'salem:detail' object_model='Faction' object_pk=faction.id %}">{{ faction.name }}</a></li>
+                      {% endif %}
+
+                      {% for key, roles in dict_roles.items %}
+                          {% if faction.id == key %}
+                              {% for role in roles %}
+
+                              {% if object_model == 'Role' and role.id == object.id %}
+                                  <li><a class="ps-5 active" href="{% url 'salem:detail' object_model='Role' object_pk=role.id %}">{{ role.name }}</a></li>
+                              {% else %}
+                                  <li><a class="ps-5" href="{% url 'salem:detail' object_model='Role' object_pk=role.id %}">{{ role.name }}</a></li>
+                              {% endif %}
+
+
+                              {% endfor %}
+                          {% endif %}
+                      {% endfor %}
                   {% endfor %}
 
               </ul>
 
-              {% if main_script == 'roles' %}
-                  <a class="ps-3 active" href="{% url 'salem:docs' 'roles' %}">{% translate "Roles" %}</a>
-              {% else %}
-                  <a class="ps-3" href="{% url 'salem:docs' 'roles' %}">{% translate "Roles" %}</a>
-              {% endif %}
-              <ul class="list-unstyled small">
-
-                  {% for role in roles %}
-                  <li><a class="ps-5" href="{% url 'salem:detail' object_model='Role' object_pk=role.name %}">{{ role.name }}</a></li>
-                  {% endfor %}
-
-              </ul>
 
           {% else %}
               <ul>

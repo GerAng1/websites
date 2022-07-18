@@ -37,13 +37,26 @@
         {% endfor %}
 
     {% elif main_script == 'roles' %}
-        {% for role in roles %}
+
+        {% for faction in factions %}
             <div class="row">
-                <h5>{{ role.name }}</h5>
+                <p class="fs-1">{{ faction.name }}</p>
             </div>
-            <div class="row">
-                <p>{{ role.descr }}</p>
-            </div>
+
+            {% for key, roles in dict_roles.items %}
+                {% if faction.id == key %}
+                    {% for role in roles %}
+
+                        <div class="row">
+                            <h5>{{ role.name }}</h5>
+                        </div>
+                        <div class="row">
+                            <p>{{ role.descr }}</p>
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
         {% endfor %}
 
     {% else %}

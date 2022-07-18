@@ -18,18 +18,22 @@ def new_game(request):
 
 def docs(request, main_script):
     factions = Faction.objects.all()
-    roles = Role.objects.all()
+    witches = Role.objects.filter(faction=1)
+    villagers = Role.objects.filter(faction=2)
+    lone_wolves = Role.objects.filter(faction=3)
     return render(
         request, 'salem/docs.html',
         {
             'main_script': main_script,
             'factions': factions,
-            'roles': roles})
+            'dict_roles': {1: witches, 2: villagers, 3: lone_wolves}})
 
 
 def detail(request, object_model, object_pk):
     factions = Faction.objects.all()
-    roles = Role.objects.all()
+    witches = Role.objects.filter(faction=1)
+    villagers = Role.objects.filter(faction=2)
+    lone_wolves = Role.objects.filter(faction=3)
 
     if object_model == 'Faction':
         object = get_object_or_404(Faction, pk=object_pk)
@@ -41,9 +45,10 @@ def detail(request, object_model, object_pk):
         raise Http404("U did somethin wrong.")
 
     return render(
-        request, 'salem/docs.html',
+        request, 'salem/details.html',
         {
             'main_script': main_script,
+            'object_model': object_model,
             'object': object,
             'factions': factions,
-            'roles': roles})
+            'dict_roles': {1: witches, 2: villagers, 3: lone_wolves}})
