@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'aldeasite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'aldeadatabase',
+        'NAME': 'villagedb',
         'USER': 'overseer',
         'PASSWORD': 'overseer',
         'HOST': '127.0.0.1',
