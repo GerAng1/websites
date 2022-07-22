@@ -1,0 +1,35 @@
+{% extends "base_templates/salem_base_docs.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="The Village Rules: Docs">
+{% endblock %}
+
+{% block title %}{{ object.name }} {{ object.symbol }}{% endblock %}
+
+{% block page %}{{ object.name }} {{ object.symbol }}{% endblock %}
+
+{% block container %}
+
+<div class="container">
+
+    <!-- DOCS this will be for loop with info of main script -->
+    {% if object %}
+        <div class="row">
+            <h2>{{ object.name }} <span>{{ object.symbol }}</span> </h2>
+        </div>
+        <div class="row">
+            <p>{{ object.descr }}</p>
+        </div>
+
+    {% else %}
+        <div class="row">
+            <h2>This shouldn't appear. What IS main_script?</h2>
+        </div>
+
+    {% endif %}
+    <!-- FACTIONS this will be for loop with info of main script -->
+</div>
+
+{% endblock %}

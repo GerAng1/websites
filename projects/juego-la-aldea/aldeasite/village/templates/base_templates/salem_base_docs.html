@@ -1,0 +1,80 @@
+{% extends "base_templates/salem_base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% translate "La Aldea" as game_name %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'village/css/docs.css' %}">
+{% endblock %}
+
+{% block page %}{% translate "Docs" %}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-12 col-md-2 sidebar">
+                <ul class="list-unstyled">
+
+                  <li>
+
+                  <!-- FOR LOOP HERE -->
+                  {% if factions %}
+                      <a class="ps-3 lead fs-5" href="{% url 'salem:docs' 'factions' %}">{% translate "Facciones + Roles" %}</a>
+
+                      <ul class="list-unstyled small">
+
+                          {% for faction in factions %}
+                              {% if main_script == 'factions' and faction.id == object.id %}
+                                  <li><a class="ps-4 active fs-5" href="{% url 'salem:detail' object_model='factions' object_pk=faction.id %}">{{ faction.name }}</a></li>
+                              {% else %}
+                                  <li><a class="ps-4 fs-5" href="{% url 'salem:detail' object_model='factions' object_pk=faction.id %}">{{ faction.name }}</a></li>
+                              {% endif %}
+
+                              {% for key, roles in dict_roles.items %}
+                                  {% if faction.id == key %}
+                                      {% for role in roles %}
+
+                                      {% if main_script == 'roles' and role.id == object.id %}
+                                          <li><a class="ps-5 active" href="{% url 'salem:detail' object_model='roles' object_pk=role.id %}">{{ role.name }}</a></li>
+                                      {% else %}
+                                          <li><a class="ps-5" href="{% url 'salem:detail' object_model='roles' object_pk=role.id %}">{{ role.name }}</a></li>
+                                      {% endif %}
+
+
+                                      {% endfor %}
+                                  {% endif %}
+                              {% endfor %}
+                          {% endfor %}
+
+                      </ul>
+
+
+                  {% else %}
+                      <ul>
+                          <p>NOT FOUND.</p>
+                      </ul>
+                  {% endif %}
+
+                  </li>
+
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-10 content">
+
+                {% block container %}
+
+                    <h1>This is written in the base_docs.html</h1>
+
+                {% endblock %}
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %} {% endblock %}

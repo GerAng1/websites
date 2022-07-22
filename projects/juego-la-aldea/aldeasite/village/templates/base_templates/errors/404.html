@@ -1,0 +1,29 @@
+{% extends "base_templates/errors/base_errors.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="This page is under contruction.
+    Mafia-inspired game web setupper.
+    Type in players, roles that'll play and the system will sort the roles.
+    View documentation and rules.">
+{% endblock %}
+
+{% block title %}{% translate "Bajo Construcción" %}{% endblock %}
+
+{% block styles %} {% endblock %}
+
+{% block page %}{% translate "Bajo Construcción" %}{% endblock %}
+
+{% block content %}
+
+    <div class="container m-5 text-center ">
+      <div class="row">
+        <p class="display-1">Oops!</p>
+        <img class="w-25 mx-auto d-block" src="{% static 'village/logos/villageblack.png'%}" alt="">
+        <p class="display-6">Esta página aún no es creada. Lamentamos la molestia.</p>
+        <a class="display-6" href="{% url 'village:index' %}">Regresar a la Página Principal.</a>
+      </div>
+    </div>
+
+{% endblock %}

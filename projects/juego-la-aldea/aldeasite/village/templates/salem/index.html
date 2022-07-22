@@ -1,0 +1,58 @@
+{% extends "base_templates/salem_base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="Mafia-inspired game web setupper.
+    Type in players, roles that'll play and the system will sort the roles.
+    View documentation and rules.">
+{% endblock %}
+
+{% block title %}{% translate "Inicio" %}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'village/css/index.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'village/css/flickity.css' %}">
+{% endblock %}
+
+{% block page %}{% translate "Inicio" %}{% endblock %}
+
+{% block content %}
+
+    <div class="container mb-5">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6">
+
+                <div class="row">
+                    <p>{{ theme.0.prologue|linebreaks }}</p>
+                </div>
+                <div class="row text-center px-5">
+                    <a href="{% url 'salem:new-game' %}" class="btn btn-dark">{% translate "Crear Nueva Aldea Salem" %}</a>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" data-bs-interval="4500">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'village/media/burning_witches.jpg'%}" height="500px" style="object-fit: cover" class="d-block w-100" alt="Burning Witches">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'village/media/salem_trial.jpg'%}" height="500px" style="object-fit: cover" class="d-block w-100" alt="Salem Trial 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'village/media/salem_trial2.jpg'%}" height="500px" style="object-fit: cover" class="d-block w-100" alt="Salem Trial 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+{% block scripts %} {% endblock %}

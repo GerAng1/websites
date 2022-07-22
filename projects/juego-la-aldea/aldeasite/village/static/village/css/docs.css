@@ -1,0 +1,36 @@
+h1 span, h2 span {
+  font-size: 40px;
+  margin-left: 2px;
+}
+
+/* The side navigation menu */
+.sidebar {
+  background-color: #f1f1f1;
+  height: 100vh;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar .title {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 9px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}

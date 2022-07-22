@@ -1,0 +1,90 @@
+{% extends "base_templates/village_base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="Mafia-inspired game web setupper.
+    Type in players, roles that'll play and the system will sort the roles.
+    View documentation and rules.">
+{% endblock %}
+
+{% block title %}{% translate "Inicio" %}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'village/css/index.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'village/css/flickity.css' %}">
+{% endblock %}
+
+{% block page %}{% translate "Inicio" %}{% endblock %}
+
+{% block content %}
+
+<!-- Theme Selector -->
+<div class="container px-5 mb-5">
+    <div class="row align-items-center gy-4 gx-5">
+        <div class="col-12 col-lg-8">
+            <h1 class="display-6">{% translate "Elije tu temática" %}</h1>
+            <h5>
+              {% translate "¡La mecánica del juego cambia dependiendo de la temática!" %}
+              <span class="lead">{% translate "Selecciona una opción para saber más." %}</span>
+            </h5>
+
+            <div class="main-carousel">
+                <div class="carousel-cell">
+                    <img src="{% static 'village/media/salem.jpg'%}" class="w-100" alt="Salem Theme">
+                    <button id="themeBtn1" type="button" class="btn btn-dark btn-lg start-50 translate-middle-x" data-bs-toggle="button" onclick="themeSelector('Salem', 1)">
+                        {% translate "Aldea Salem" %}
+                    </button>
+                </div>
+                <div class="carousel-cell">
+                  <img src="{% static 'village/media/nineties.jpg'%}" class="w-100" id="brad" alt="Nineties Theme">
+                  <button id="themeBtn2" type="button" class="btn btn-dark btn-lg start-50 translate-middle-x" data-bs-toggle="button" onclick="themeSelector('90s', 2)">
+                    {% translate "Aldea 90s" %}
+                  </button>
+                </div>
+                <div class="carousel-cell">
+                    <img src="{% static 'village/media/tokyo.jpg'%}" class="w-100" alt="Tokyo 3042 Theme">
+                    <button id="themeBtn3" type="button" class="btn btn-dark btn-lg start-50 translate-middle-x" data-bs-toggle="button" onclick="themeSelector('Tokyo 3042', 3)">
+                        {% translate "Aldea Tokyo 3042" %}
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 col-lg-4 align-self-start">
+            <div class="row mb-5">
+                <h1 class="display-6">O lee sobre el juego original.</h1>
+            </div>
+
+            <div class="row">
+                <div id="descr1" class="row my-1 d-none">
+                    <p class="">{{ themes.0.descr|linebreaks }}</p>
+                </div>
+                <div id="descr2" class="row my-1 d-none">
+                    <p class="">{{ themes.1.descr|linebreaks }}</p>
+                </div>
+                <div id="descr3" class="row my-1 d-none">
+                    <p class="">{{ themes.2.descr|linebreaks }}</p>
+                </div>
+                <div class="row d-grid gap-2 my-1">
+                    <a href="{% url 'village:rules' %}" class="btn btn-dark" role="button">{% translate "Lee las reglas originales" %}</a>
+                    <a href="{% url 'salem:index' %}" class="btn btn-dark disabled" id="beginBtn" tabindex="-1" role="button" aria-disabled="true">{% translate "Elige una temática para iniciar" %}</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- End Theme Selector -->
+{% endblock %}
+
+
+
+{% block scripts %}
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<script type="text/javascript" src="{% static 'village/js/index.js' %}"></script>
+{% endblock %}
