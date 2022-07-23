@@ -1,0 +1,45 @@
+{% extends "base_templates/salem_base_docs.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="The Village Rules: Docs">
+{% endblock %}
+
+{% block title %}{% translate "Docs" %}{% endblock %}
+
+{% block page %}{% translate "Docs" %}{% endblock %}
+
+{% block container %}
+
+<div class="container">
+
+    <div class="row">
+        <p>1. Hay tres facciones: Aldeanes, Brujes y Solitaries.</p>
+        <p>2. Aldeanes ganan si son la única facción viva.</p>
+        <p>3. Brujes ganan si son la única facción viva ó si hay mismo número de Brujes que Aldeanes y ningún Solitaries.</p>
+        <p>4. Cada Solitarie tiene su condición para ganar.</p>
+        <p>5. MIENTRAS SIGA VIVX FORENSE, al morir alguien, se anunciará su facción, mas no su rol. Se dirá vagamente como murió (en el caso de suicidio de Mesías, se dirá una pista falsa).</p>
+        <ul class="list-unstyled">
+          6. Toda revelación de facción por parte de la Aldea deberá ser tomado como un engaño. Esto aplica también al chat de muertos mientras se cumpla cualquiera de las siguientes:
+          <li class="ms-4">a. Zeus esté muerto y no haya usado su poder.</li>
+          <li class="ms-4">b. Médium siga vivx.</li>
+          <li class="ms-4">c. Mesías haya muerto y no haya vuelto aún.</li>
+        </ul>
+        <p>7. Está prohibido hablar del juego fuera de los canales oficiales. Hacerlo será castigado con la muerte.</p>
+        <p>8. Si alguien no está participando activamente en el juego, Narrador dará un aviso, al segundo aviso, sufrirá una muerte trágica accidental, quedando eliminadx.</p>
+        <p>9. A lo largo del día, el pueblo discutirá quién le parece sospechoso. A las 19:00 se abrirán la urna para votar y se cerrará a las 21:00. Si no participa suficiente gente en la votación (la mitad +1) nadie será linchadx. Si hay un empate al cierre de urnas, nadie será linchadx (REGLAS ESPECIALES APLICAN EN CASO DE ROLES).</p>
+        <p>10. Brujes tendrán de 21:00 a 23:00 para votar unánimemente a quien querrán envenenar.</p>
+        <p>11. Enamorades pueden ganar si son lxs únicxs dos vivxs, independientemente de sus facciones, pero ganan por aparte si gana su facción.</p>
+        <ul class="list-unstyled">
+          12. A partir de que queden 5 personas, se harán “días express”.
+          <li class="ms-4">a. De 11:00 - 16:00 se discutirá.</li>
+          <li class="ms-4">b. De 14:00 - 16:00 se abre Urna de linchamiento. c. De 16:00 - 17:00 se duerme (Brujes atacan).</li>
+          <li class="ms-4">d. De 17:00 - 21:00 se discutirá.</li>
+          <li class="ms-4">e. De 19:00 - 21:00 se abre Urna de linchamiento. f. De 21:00 - 11:00 se duerme (Brujes atacan).</li>
+        </ul>
+    </div>
+
+</div>
+
+{% endblock %}
