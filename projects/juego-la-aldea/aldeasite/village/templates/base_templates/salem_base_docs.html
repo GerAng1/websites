@@ -11,69 +11,83 @@
 {% block page %}{% translate "Docs" %}{% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-        <div class="row">
 
-            <div class="col-12 col-md-2 sidebar">
-                <ul class="list-unstyled">
+    <div class="sidebar wrapper align-top">
+        <ul class="list-unstyled" style="height: calc(100vh - 135px);">
 
-                  <li>
+          <li>
+              <hr class="m-0">
+              <a class="mx-auto lead fs-5 text-center" href="{% url 'salem:docs' 'factions' %}">{% translate "Básicos" %}</a>
+              <hr class="m-0 mx-2">
 
-                  <!-- FOR LOOP HERE -->
-                  {% if factions %}
-                      <a class="ps-3 lead fs-5" href="{% url 'salem:docs' 'factions' %}">{% translate "Facciones + Roles" %}</a>
+              <ul class="list-unstyled small ps-2">
 
-                      <ul class="list-unstyled small">
+                  <li><a class="fs-5" href="{% url 'salem:docs' 'village' %}">La Aldea</a></li>
+                    {% if main_script == 'rules' %}
+                    <li><a class="ps-4 active" href="{% url 'salem:docs' 'rules' %}">Reglas</a></li>
+                    {% else %}
+                    <li><a class="ps-4" href="{% url 'salem:docs' 'rules' %}">Reglas</a></li>
+                    {% endif %}
+                    <li><a class="ps-4" href="{% url 'salem:docs' 'village' %}">Día y Noche</a></li>
+                    <li><a class="ps-4" href="{% url 'salem:docs' 'village' %}">Grupos</a></li>
 
-                          {% for faction in factions %}
-                              {% if main_script == 'factions' and faction.id == object.id %}
-                                  <li><a class="ps-4 active fs-5" href="{% url 'salem:detail' object_model='factions' object_pk=faction.id %}">{{ faction.name }}</a></li>
-                              {% else %}
-                                  <li><a class="ps-4 fs-5" href="{% url 'salem:detail' object_model='factions' object_pk=faction.id %}">{{ faction.name }}</a></li>
-                              {% endif %}
+              </ul>
 
-                              {% for key, roles in dict_roles.items %}
-                                  {% if faction.id == key %}
-                                      {% for role in roles %}
-
-                                      {% if main_script == 'roles' and role.id == object.id %}
-                                          <li><a class="ps-5 active" href="{% url 'salem:detail' object_model='roles' object_pk=role.id %}">{{ role.name }}</a></li>
-                                      {% else %}
-                                          <li><a class="ps-5" href="{% url 'salem:detail' object_model='roles' object_pk=role.id %}">{{ role.name }}</a></li>
-                                      {% endif %}
+          </li>
 
 
-                                      {% endfor %}
-                                  {% endif %}
-                              {% endfor %}
-                          {% endfor %}
+          {% if factions %}
+            <li class="pb-4">
+                <hr class="mt-3 mb-0 mx-2">
+                <a class="mx-auto lead fs-5 text-center" href="{% url 'salem:docs' 'factions' %}">{% translate "Facciones + Roles" %}</a>
+                <hr class="m-0 mx-2">
 
-                      </ul>
+                <ul class="list-unstyled small ps-2">
 
+                    <!-- FOR LOOP HERE -->
+                    {% for faction in factions %}
+                        {% if main_script == 'factions' and faction.id == object.id %}
+                        <li><a class="active fs-5" href="{% url 'salem:detail' object_model='factions' object_pk=faction.id %}">{{ faction.name }}</a></li>
+                        {% else %}
+                        <li><a class="fs-5" href="{% url 'salem:detail' object_model='factions' object_pk=faction.id %}">{{ faction.name }}</a></li>
+                        {% endif %}
 
-                  {% else %}
-                      <ul>
-                          <p>NOT FOUND.</p>
-                      </ul>
-                  {% endif %}
+                        {% for key, roles in dict_roles.items %}
+                            {% if faction.id == key %}
+                                {% for role in roles %}
 
-                  </li>
+                                    {% if main_script == 'roles' and role.id == object.id %}
+                                    <li><a class="ps-4 active" href="{% url 'salem:detail' object_model='roles' object_pk=role.id %}">{{ role.name }}</a></li>
+                                    {% else %}
+                                    <li><a class="ps-4" href="{% url 'salem:detail' object_model='roles' object_pk=role.id %}">{{ role.name }}</a></li>
+                                    {% endif %}
+
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
 
                 </ul>
-            </div>
+            </li>
 
-            <div class="col-12 col-md-10 content">
+            {% else %}
+              <li>
+                  <p>NO FACTIONS FOUND.</p>
+              </li>
+            {% endif %}
 
-                {% block container %}
-
-                    <h1>This is written in the base_docs.html</h1>
-
-                {% endblock %}
-            </div>
-
-
-        </div>
+        </ul>
     </div>
+
+    <div class="content wrapper px-3 pb-4 align-top">
+        {% block container %}
+
+            <h1>This is written in the base_docs.html</h1>
+
+        {% endblock %}
+    </div>
+
+
 
 {% endblock %}
 

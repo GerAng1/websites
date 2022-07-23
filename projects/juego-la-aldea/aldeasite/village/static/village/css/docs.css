@@ -3,11 +3,15 @@ h1 span, h2 span {
   margin-left: 2px;
 }
 
+.wrapper {
+  display: table-cell;
+}
+
 /* The side navigation menu */
 .sidebar {
   background-color: #f1f1f1;
-  height: 100vh;
   overflow: auto;
+  width: 200px;
 }
 
 /* Sidebar links */
@@ -33,4 +37,9 @@ h1 span, h2 span {
 .sidebar a:hover:not(.active) {
   background-color: #555;
   color: white;
+}
+
+.content {
+  height: calc(50vh - 135px);
+  width: calc(100vw - 200px);
 }

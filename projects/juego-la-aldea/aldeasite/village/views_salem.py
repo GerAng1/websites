@@ -3,6 +3,10 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import Faction, Role, Theme
 
+factions = Faction.objects.all()
+villagers = Role.objects.filter(faction=1)
+witches = Role.objects.filter(faction=2)
+lone_wolves = Role.objects.filter(faction=3)
 
 # Create your views here.
 def index(request):
@@ -19,24 +23,23 @@ def new_game(request):
 
 
 def docs(request, main_script):
-    factions = Faction.objects.all()
-    witches = Role.objects.filter(faction=1)
-    villagers = Role.objects.filter(faction=2)
-    lone_wolves = Role.objects.filter(faction=3)
-    return render(
-        request, 'salem/docs/docs.html',
-        {
-            'main_script': main_script,
-            'factions': factions,
-            'dict_roles': {1: witches, 2: villagers, 3: lone_wolves}})
+    if main_script == 'rules':
+        return render(
+            request, 'salem/docs/rules.html',
+            {
+                'main_script': main_script,
+                'factions': factions,
+                'dict_roles': {1: villagers, 2: witches, 3: lone_wolves}})
+    else:
+        return render(
+            request, 'salem/docs/docs.html',
+            {
+                'main_script': main_script,
+                'factions': factions,
+                'dict_roles': {1: villagers, 2: witches, 3: lone_wolves}})
 
 
 def detail(request, object_model, object_pk):
-    factions = Faction.objects.all()
-    villagers = Role.objects.filter(faction=1)
-    witches = Role.objects.filter(faction=2)
-    lone_wolves = Role.objects.filter(faction=3)
-
     if object_model == 'factions':
         object = get_object_or_404(Faction, pk=object_pk)
 
