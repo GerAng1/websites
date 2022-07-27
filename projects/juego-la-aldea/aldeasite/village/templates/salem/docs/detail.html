@@ -1,0 +1,79 @@
+{% extends "base_templates/salem_base_docs.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+    <meta name="description" content="The Village Rules: Factions">
+{% endblock %}
+
+{% block title %}{{ current_faction.name }} {{ current_faction.symbol }}{% endblock %}
+
+{% block page %}{{ current_faction.name }} {{ current_faction.symbol }}{% endblock %}
+
+{% block container %}
+    {% if current_faction %}
+        <div class="row">
+          <p class="text-center display-6">{{ current_faction.name }} <span class="display-5">{{ current_faction.symbol }}</span> </p>
+        </div>
+        <div class="row">
+            <p class="text-center">{{ current_faction.descr }}</p>
+        </div>
+
+        {% for key, roles in dict_roles.items %}
+            {% if current_faction.id == key %}
+                {% for role in roles %}
+
+                <hr>
+                <div class="container mx-auto px-4 my-4" id="{{ current_faction.name }}-{{ role.id }}">
+                    <div class="row">
+                        <h2>{{ role.name }} <span>{{ role.symbol }}</span></h2>
+                    </div>
+                    <div class="row justify-content-center px-2">
+                        <div class="col">
+                            <p>{{ role.tier }}</p>
+                            <p>{{ role.descr }}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3 justify-content-between px-2">
+                        {% if role.notes %}
+                        <div class="col-12 col-md-6">
+                            <h4>{% translate "Notas" %}</h4>
+                            <p>{{ role.notes }}</p>
+                        </div>
+                        {% endif %}
+
+                        {% if role.tips %}
+                        <div class="col-12 col-md-6">
+                            <h4>{% translate "Tips" %}</h4>
+                            <p>{{ role.tips }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <h2>This shouldn't appear. What IS main_script?</h2>
+        </div>
+    {% endif %}
+    <div class="row">
+        <hr class="p-0 my-3">
+        {% if current_faction.id == 1 %}
+            <a class="text-end fw-bolder text-reset pe-5" href="{% url 'salem:detail' 2 %}">{% translate "Continuar a Brujas" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+        {% elif current_faction.id == 2 %}
+            <a class="text-end fw-bolder text-reset pe-5" href="{% url 'salem:detail' 3 %}">{% translate "Continuar a Solitarios" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+        {% elif current_faction.id == 3 %}
+            <span class="text-end fw-bolder text-reset pe-5">
+              {% translate "¡Esa es toda la documentación!" %}
+              <a href="{% url 'salem:new-game' %}">{% translate "Crea un Nuevo Juego" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+            </span>
+        {% else %}
+            <p class="text-end">This shouldn't happen...</p>
+        {% endif %}
+        <hr class="p-0 mt-3">
+    </div>
+{% endblock %}

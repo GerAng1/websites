@@ -1,0 +1,28 @@
+{% extends "base_templates/salem_base_docs.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="The Village Rules: Docs">
+{% endblock %}
+
+{% block title %}{% translate "Facciones" %}{% endblock %}
+
+{% block page %}{% translate "Facciones" %}{% endblock %}
+
+
+{% block container %}
+    {% for faction in factions %}
+        <div class="row">
+          <p class="text-center display-6">{{ faction.name }} <span class="display-5">{{ faction.symbol }}</span></p>
+        </div>
+        <div class="row">
+            <p class="text-center">{{ faction.descr }}</p>
+        </div>
+    {% endfor %}
+    <div class="row">
+        <hr class="p-0 my-3">
+        <a class="text-end fw-bolder text-reset pe-5" href="{% url 'salem:detail' 1 %}">{% translate "Continuar a Aldeanos" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+        <hr class="p-0 mt-3">
+    </div>
+{% endblock %}

@@ -38,48 +38,27 @@
                                       <a href="{% url 'salem:index' %}" class="nav-link text-white">
                                   {% endif %}
                                         <i class="material-symbols-outlined d-block text-center">home</i>
-                                        {% translate "Inicio" %}
+                                        {% translate "Nueva Aldea" %}
                                       </a>
                             </li>
                             <li>
                                 {% if main_script == 'rules' %}
-                                    <a href="{% url 'salem:docs' 'rules' %}" class="nav-link text-secondary">
+                                    <a href="{% url 'salem:rules' %}" class="nav-link text-secondary">
                                 {% else %}
-                                    <a href="{% url 'salem:docs' 'rules' %}" class="nav-link text-white">
+                                    <a href="{% url 'salem:rules' %}" class="nav-link text-white">
                                 {% endif %}
                                         <i class="material-symbols-outlined d-block text-center">gavel</i>
                                         {% translate "Las Reglas" %}
                                     </a>
                             </li>
                             <li>
-                                {% if main_script == 'village' %}
-                                    <a href="{% url 'salem:docs' 'village' %}" class="nav-link text-secondary">
-                                        <img class="d-block mx-auto" src="{% static 'village/logos/villagesecondary.png'%}" width="24" height="24" alt="">
-                                {% else %}
-                                    <a href="{% url 'salem:docs' 'village' %}" class="nav-link text-white">
-                                        <img class="d-block mx-auto" src="{% static 'village/logos/villagewhite.png'%}" width="24" height="24" alt="">
-                                {% endif %}
-                                        {{ game_name }}
-                                    </a>
-                            </li>
-                            <li>
                                 {% if main_script == 'factions' %}
-                                    <a href="{% url 'salem:docs' 'factions' %}" class="nav-link text-secondary">
+                                    <a href="{% url 'salem:factions' %}" class="nav-link text-secondary">
                                 {% else %}
-                                    <a href="{% url 'salem:docs' 'factions' %}" class="nav-link text-white">
+                                    <a href="{% url 'salem:factions' %}" class="nav-link text-white">
                                 {% endif %}
                                         <i class="material-symbols-outlined d-block text-center">groups_2</i>
                                         {% translate "Las Facciones" %}
-                                    </a>
-                            </li>
-                            <li>
-                                {% if main_script == 'roles' %}
-                                    <a href="{% url 'salem:docs' 'roles' %}" class="nav-link text-secondary">
-                                {% else %}
-                                    <a href="{% url 'salem:docs' 'roles' %}" class="nav-link text-white">
-                                {% endif %}
-                                        <i class="material-symbols-outlined d-block text-center">badge</i>
-                                        {% translate "Los Roles" %}
                                     </a>
                             </li>
                         </ul>

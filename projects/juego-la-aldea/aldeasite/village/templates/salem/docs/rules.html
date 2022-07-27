@@ -3,28 +3,27 @@
 {% load i18n %}
 
 {% block meta %}
-<meta name="description" content="The Village Rules: Docs">
+<meta name="description" content="The Village Rules: Main Rules">
 {% endblock %}
 
-{% block title %}{% translate "Docs" %}{% endblock %}
+{% block title %}{% translate "Reglas" %}{% endblock %}
 
-{% block page %}{% translate "Docs" %}{% endblock %}
+{% block page %}{% translate "Reglas" %}{% endblock %}
+
 
 {% block container %}
-
-<div class="container">
-
-    <div class="row">
+    <div class="row" id="reglas">
+      REGLAS
         <p>1. Hay tres facciones: Aldeanes, Brujes y Solitaries.</p>
         <p>2. Aldeanes ganan si son la única facción viva.</p>
         <p>3. Brujes ganan si son la única facción viva ó si hay mismo número de Brujes que Aldeanes y ningún Solitaries.</p>
         <p>4. Cada Solitarie tiene su condición para ganar.</p>
         <p>5. MIENTRAS SIGA VIVX FORENSE, al morir alguien, se anunciará su facción, mas no su rol. Se dirá vagamente como murió (en el caso de suicidio de Mesías, se dirá una pista falsa).</p>
         <ul class="list-unstyled">
-          6. Toda revelación de facción por parte de la Aldea deberá ser tomado como un engaño. Esto aplica también al chat de muertos mientras se cumpla cualquiera de las siguientes:
-          <li class="ms-4">a. Zeus esté muerto y no haya usado su poder.</li>
-          <li class="ms-4">b. Médium siga vivx.</li>
-          <li class="ms-4">c. Mesías haya muerto y no haya vuelto aún.</li>
+            6. Toda revelación de facción por parte de la Aldea deberá ser tomado como un engaño. Esto aplica también al chat de muertos mientras se cumpla cualquiera de las siguientes:
+            <li class="ms-4">a. Zeus esté muerto y no haya usado su poder.</li>
+            <li class="ms-4">b. Médium siga vivx.</li>
+            <li class="ms-4">c. Mesías haya muerto y no haya vuelto aún.</li>
         </ul>
         <p>7. Está prohibido hablar del juego fuera de los canales oficiales. Hacerlo será castigado con la muerte.</p>
         <p>8. Si alguien no está participando activamente en el juego, Narrador dará un aviso, al segundo aviso, sufrirá una muerte trágica accidental, quedando eliminadx.</p>
@@ -32,14 +31,26 @@
         <p>10. Brujes tendrán de 21:00 a 23:00 para votar unánimemente a quien querrán envenenar.</p>
         <p>11. Enamorades pueden ganar si son lxs únicxs dos vivxs, independientemente de sus facciones, pero ganan por aparte si gana su facción.</p>
         <ul class="list-unstyled">
-          12. A partir de que queden 5 personas, se harán “días express”.
-          <li class="ms-4">a. De 11:00 - 16:00 se discutirá.</li>
-          <li class="ms-4">b. De 14:00 - 16:00 se abre Urna de linchamiento. c. De 16:00 - 17:00 se duerme (Brujes atacan).</li>
-          <li class="ms-4">d. De 17:00 - 21:00 se discutirá.</li>
-          <li class="ms-4">e. De 19:00 - 21:00 se abre Urna de linchamiento. f. De 21:00 - 11:00 se duerme (Brujes atacan).</li>
+            12. A partir de que queden 5 personas, se harán “días express”.
+            <li class="ms-4">a. De 11:00 - 16:00 se discutirá.</li>
+            <li class="ms-4">b. De 14:00 - 16:00 se abre Urna de linchamiento. c. De 16:00 - 17:00 se duerme (Brujes atacan).</li>
+            <li class="ms-4">d. De 17:00 - 21:00 se discutirá.</li>
+            <li class="ms-4">e. De 19:00 - 21:00 se abre Urna de linchamiento. f. De 21:00 - 11:00 se duerme (Brujes atacan).</li>
         </ul>
     </div>
 
-</div>
+    <div class="row" id="horario">
+        HORARIO
+    </div>
+
+    <div class="row" id="grupos">
+        GRUPOS
+    </div>
+
+    <div class="row">
+      <hr class="p-0 my-3">
+        <a class="text-end fw-bolder text-reset pe-5" href="{% url 'salem:factions' %}">{% translate "Continuar a Facciones" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+      <hr class="p-0 mt-3">
+    </div>
 
 {% endblock %}
