@@ -1,0 +1,65 @@
+{% extends "registration/base_auth.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="Login.
+    Mafia-inspired game web setupper.
+    Type in players, roles that'll play and the system will sort the roles.
+    View documentation and rules.">
+{% endblock %}
+
+{% block title %}{% translate "Iniciar Sesión" %}{% endblock %}
+
+{% block styles %} {% endblock %}
+
+{% block content %}
+
+    <div class="container m-5 text-center ">
+
+      <div class="row">
+        <p class="display-6">{% translate "Inicio Sesión" %}</p>
+        <p class="">{% translate "Para evitar que cualquiera vea a los integrantes de una aldea creada, se necesita iniciar sesión." %}</p>
+      </div>
+
+      <div class="row m-5 justify-content-center">
+          <div class="col-6">
+            <!-- <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <input class="btn btn-primary" type="submit" value="Submit">
+            </form> -->
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="username" class="form-label">{% translate "Usuario" %}</label>
+                  <!-- <input type="text" class="form-control" id="username" name="username"> -->
+                  {{ form.username }}
+                  <!-- <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    { for user in users %}
+                        <option value="1">{{ user.username }}</option>
+                    { endfor %}
+                  </select> -->
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">{% translate "Contraseña" %}</label>
+                  <!-- <input type="password" class="form-control" name="password" id="password"> -->
+                  {{ form.password }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+          </div>
+          <div class="col-6">
+              <img class="w-25 mx-auto d-block" src="{% static 'village/logos/villageblack.png'%}" alt="">
+          </div>
+      </div>
+
+      <div class="row">
+        <a class="" href="{% url 'village:index' %}">Regresar a la Página Principal.</a>
+      </div>
+    </div>
+
+{% endblock %}

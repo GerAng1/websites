@@ -71,8 +71,12 @@
                   <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
                 </form>
 
-                <div class="text-end">
-                  <a href="{% url 'village:construction' %}" class="btn btn-primary">{% translate "Iniciar Sesión" %}</a>
+                <div class="text-end pe-3">
+                    {% if user.is_authenticated %}
+                        <span class="h6">{% translate "¡Hola" %} {{user.username}}! <a href="{% url 'logout' %}">Cerrar Sesión</a></span>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-primary">{% translate "Iniciar Sesión" %}</a>
+                    {% endif %}
                 </div>
               </div>
             </div>

@@ -20,6 +20,7 @@ from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('village.urls_village')),
     path('salem/', include('village.urls_salem'))
 ]

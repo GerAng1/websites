@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth.decorators import login_required
 
 from .models import Faction, Role, Theme
 
@@ -17,6 +18,7 @@ def index(request):
             'theme': Theme.objects.filter(pk=1)})
 
 
+@login_required
 def new_game(request):
     return render(
         request, 'salem/new_game.html')
