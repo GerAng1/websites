@@ -23,7 +23,3 @@ def rules(request):
 
 def factions(request):
     return render(request, 'village/factions.html', {'main_script': 'factions'})
-
-
-def roles(request):
-    return render(request, 'village/roles.html', {'main_script': 'roles'})

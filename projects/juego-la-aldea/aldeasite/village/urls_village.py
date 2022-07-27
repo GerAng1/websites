@@ -7,5 +7,4 @@ urlpatterns = [
     path('404', views_village.construction, name='construction'),
     path('docs/rules', views_village.rules, name='rules'),
     path('docs/factions', views_village.factions, name='factions'),
-    path('docs/roles', views_village.roles, name='roles'),
 ]

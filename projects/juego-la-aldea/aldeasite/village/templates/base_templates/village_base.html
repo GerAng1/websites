@@ -61,16 +61,6 @@
                                   {% translate "Las Facciones" %}
                                 </a>
                             </li>
-                            <li>
-                                {% if main_script == 'roles' %}
-                                  <a href="{% url 'village:roles' %}" class="nav-link text-secondary">
-                                {% else %}
-                                  <a href="{% url 'village:roles' %}" class="nav-link text-white">
-                                {% endif %}
-                                  <i class="material-symbols-outlined d-block text-center">badge</i>
-                                  {% translate "Los Roles" %}
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
