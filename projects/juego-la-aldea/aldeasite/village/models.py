@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 # Create your models here.
@@ -34,28 +37,23 @@ class Role(models.Model):
         return self.name
 
 
-class Player(models.Model):
-    name = models.CharField('Name', max_length=100)
-
-    def __str__(self):
-        return self.name
-
-
 class Village(models.Model):
     name = models.CharField('Name', max_length=100)
-    occupants = models.ManyToManyField(Player, through='Membership')
-    status = models.TextField("Status", default="Hasn't started.")
-    date_created = models.DateField()
+    status = models.TextField("Status", default="About to begin.")
     theme = models.ForeignKey(Theme, on_delete=models.CASCADE)
+    date_created = models.DateField()
+    overseer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
 
 
-class Membership(models.Model):
-    player = models.ForeignKey(Player, on_delete=models.CASCADE)
-    village = models.ForeignKey(Village, on_delete=models.CASCADE)
-    faction = models.ForeignKey(Faction, on_delete=models.CASCADE)
-    assigned_roles = models.ManyToManyField(Role)
+class Player(models.Model):
+    name = models.CharField('Name', max_length=100)
+    village = models.ForeignKey(Village, on_delete=models.CASCADE, null=True, blank=True)
+    faction = models.ForeignKey(Faction, on_delete=models.CASCADE, null=True, blank=True)
+    assigned_roles = models.ManyToManyField(Role, blank=True)
     alive = models.BooleanField('Alive', default=True)
-    overseer = models.BooleanField('Overseer', default=False)
+
+    def __str__(self):
+        return self.name
