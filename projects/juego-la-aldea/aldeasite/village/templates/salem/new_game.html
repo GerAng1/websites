@@ -15,16 +15,36 @@
 {% block page %}{% translate "Nueva Aldea" %}{% endblock %}
 
 {% block content %}
-<div class="container">
-    <p>Aqui deberías agregar los nombres de las personas.</p>
-    <p>Luego el sistema agrega a db y de ahi extrae numero de peerosnas </p>
-    <p>Corre script para determinar proporcion de jugadores</p>
-    <p>Dar la opcion de modificar a preferencia</p>
-    <p>Asignar roles</p>
-    <p>Dar la opcion de modificar a preferencia</p>
-    <p>Guardar todo en db</p>
-    <p>continuar a oveerseeer initial setup</p>
+<div class="container mb-5">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <p class="lead">{% translate "Banco actual de jugadores" %}:</p>
+        {% for player in players %}
+          <p>{{ player.name }}</p>
+        {% endfor %}
+      </div>
+
+      <div class="col-12 col-md-6">
+        <p class="lead">{% translate "Falta alguien? Agrégalo aquí" %}</p>
+        <form method='POST' action="{% url 'salem:new-game' %}">
+        {% csrf_token %}
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputPlayer">{% translate "Jugador" %}</span>
+          <input type="text" name="newPlayer" class="form-control" aria-label="Input Player" aria-describedby="inputPlayer">
+        </div>
+        <button class="btn btn-primary" type="submit">{% translate "Agregar" %}</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+        <hr class="p-0 my-3">
+        <a class="text-end fw-bolder text-reset pe-5" href="{% url 'salem:sort' %}">{% translate "Continuar a selección de Facciones" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+        <hr class="p-0 mt-3">
+    </div>
 </div>
 {% endblock %}
 
-{% block scripts %} {% endblock %}
+{% block scripts %}
+<script src="{% static 'village/js/test.js' %}""></script>
+{% endblock %}

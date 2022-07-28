@@ -1,7 +1,9 @@
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
-from .models import Faction, Role, Theme
+from .models import Faction, Role, Theme, Player
 
 factions = Faction.objects.all()
 villagers = Role.objects.filter(faction=1)
@@ -20,8 +22,22 @@ def index(request):
 
 @login_required
 def new_game(request):
+    if request.method == 'POST':
+        new_player = request.POST.get('newPlayer')
+        Player(name=new_player).save()
+        return HttpResponseRedirect(reverse('salem:new-game'))
+
     return render(
-        request, 'salem/new_game.html')
+        request, 'salem/new_game.html',
+        {
+            'main_script': 'index',
+            'players': Player.objects.filter(village__isnull=True)})
+
+
+@login_required
+def sort(request):
+    # add sort.py HERE
+    return render(request, 'salem/sort.html',)
 
 
 def rules(request):
