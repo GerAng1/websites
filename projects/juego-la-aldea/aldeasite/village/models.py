@@ -28,7 +28,8 @@ class Faction(models.Model):
 class Role(models.Model):
     name = models.CharField('Name', max_length=100)
     descr = models.TextField('Description', default="Description")
-    faction = models.ForeignKey(Faction, on_delete=models.CASCADE, null=True, blank=True)
+    faction = models.ForeignKey(
+        Faction, on_delete=models.CASCADE, null=True, blank=True)
     notes = models.TextField('Notes', null=True, blank=True)
     tips = models.TextField('Tips', null=True, blank=True)
     tier = models.IntegerField('Tier', default=1)
@@ -40,9 +41,11 @@ class Role(models.Model):
 class Village(models.Model):
     name = models.CharField('Name', max_length=100)
     status = models.TextField("Status", default="About to begin.")
-    theme = models.ForeignKey(Theme, on_delete=models.CASCADE)
+    theme = models.ForeignKey(
+        Theme, on_delete=models.CASCADE)
     date_created = models.DateField()
-    overseer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    overseer = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -50,10 +53,15 @@ class Village(models.Model):
 
 class Player(models.Model):
     name = models.CharField('Name', max_length=100)
-    village = models.ForeignKey(Village, on_delete=models.CASCADE, null=True, blank=True)
-    faction = models.ForeignKey(Faction, on_delete=models.CASCADE, null=True, blank=True)
+    village = models.ForeignKey(
+        Village, on_delete=models.CASCADE, null=True, blank=True)
+    faction = models.ForeignKey(
+        Faction, on_delete=models.CASCADE, null=True, blank=True)
     assigned_roles = models.ManyToManyField(Role, blank=True)
     alive = models.BooleanField('Alive', default=True)
 
     def __str__(self):
         return self.name
+
+    def get_roles(self):
+        return self.assigned_roles.all()
