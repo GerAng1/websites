@@ -1,0 +1,30 @@
+<!-- STEP 3 in village creation:
+Names Village, assigns it to current user & assigns everyone to it.-->
+
+{% extends "base_templates/salem_base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="Mafia-inspired game web setupper.
+    Type in players, roles that'll play and the system will sort the roles.">
+{% endblock %}
+
+{% block title %}{% translate "Nueva Aldea: Paso 3" %}{% endblock %}
+
+{% block styles %} {% endblock %}
+
+{% block page %}{% translate "Nueva Aldea: Paso 3" %}{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+    <h1 class="display-6">{% translate "Dale un nombre a tu Aldea" %}:</h1>
+    <div class="row mb-4">
+      <p>Corre script para determinar proporcion de jugadores</p>
+      <p>Guardar todo en db</p>
+      <p>continuar a oveerseeer initial setup</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %} {% endblock %}

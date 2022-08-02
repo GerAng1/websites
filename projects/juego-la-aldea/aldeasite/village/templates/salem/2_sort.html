@@ -1,0 +1,149 @@
+<!-- STEP 2 in village creation:
+Sorts players into facction + assigns roles.
+Option to re-sort.-->
+
+{% extends "base_templates/salem_base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="Mafia-inspired game web setupper.
+    Type in players, roles that'll play and the system will sort the roles.">
+{% endblock %}
+
+{% block title %}{% translate "Nueva Aldea: Paso 2" %}{% endblock %}
+
+{% block styles %} {% endblock %}
+
+{% block page %}{% translate "Nueva Aldea: Paso 2" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="display-6">{% translate "Facciones" %}</h1>
+    <p>{% translate "La proporción fue generada por un algoritmo y por el momento no se puede modificar." %}</p>
+    <div class="row mb-4 px-5 text-center">
+
+        <table class="table table-warning table-striped table-hover">
+              <thead>
+                  <tr>
+                      <th colspan="3" class="h4">{% translate "Aldeanos" %}</th>
+                  </tr>
+                  <tr>
+                      <th scope="col" style="width: 33%;">{% translate "Jugador" %}</th>
+                      <th scope="col" style="width: 33%;">{% translate "Rol Primario" %}</th>
+                      <th scope="col" style="width: 33%;">{% translate "Rol Secundario" %}</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for p in sorted_players.villagers %}
+                      <tr>
+                          <th scope="row">{{ p.name }}</th>
+                          {% if p.get_roles|length_is:"2" %}
+                              {% for r in p.get_roles %}
+                              <td>{{ r.name }}</td>
+                              {% endfor %}
+                          {% elif p.get_roles|length_is:"1" %}
+                              {% for r in p.get_roles %}
+                              <td>{{ r.name }}</td>
+                              {% endfor %}
+                              <td>{% translate "Ninguno" %}</td>
+                          {% else %}
+                              <td>{% translate "Ninguno" %}</td>
+                              <td>{% translate "Ninguno" %}</td>
+                      </tr>
+                          {% endif %}
+                  {% endfor %}
+            </tbody>
+          </table>
+
+        <table class="table table-dark table-striped table-hover">
+          <thead>
+              <tr>
+                  <th colspan="3" class="h4">{% translate "Brujas" %}</th>
+              </tr>
+              <tr>
+                <th scope="col" style="width: 33%;">{% translate "Jugador" %}</th>
+                <th scope="col" style="width: 33%;">{% translate "Rol Primario" %}</th>
+                <th scope="col" style="width: 33%;">{% translate "Rol Secundario" %}</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for p in sorted_players.mafia %}
+                  <tr>
+                      <th scope="row">{{ p.name }}</th>
+                      {% if p.get_roles|length_is:"2" %}
+                          {% for r in p.get_roles %}
+                          <td>{{ r.name }}</td>
+                          {% endfor %}
+                      {% elif p.get_roles|length_is:"1" %}
+                          {% for r in p.get_roles %}
+                          <td>{{ r.name }}</td>
+                          {% endfor %}
+                          <td>{% translate "Ninguno" %}</td>
+                      {% else %}
+                          <td>{% translate "Ninguno" %}</td>
+                          <td>{% translate "Ninguno" %}</td>
+                  </tr>
+                      {% endif %}
+              {% endfor %}
+        </tbody>
+      </table>
+
+        <table class="table table-info table-striped table-hover">
+          <thead>
+              <tr>
+                  <th colspan="3" class="h4">{% translate "Solitarios" %}</th>
+              </tr>
+              <tr>
+                <th scope="col" style="width: 33%;">{% translate "Jugador" %}</th>
+                <th scope="col" style="width: 33%;">{% translate "Rol Primario" %}</th>
+                <th scope="col" style="width: 33%;">{% translate "Rol Secundario" %}</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for p in sorted_players.lone_wolves %}
+                  <tr>
+                      <th scope="row">{{ p.name }}</th>
+                      {% if p.get_roles|length_is:"2" %}
+                          {% for r in p.get_roles %}
+                          <td>{{ r.name }}</td>
+                          {% endfor %}
+                      {% elif p.get_roles|length_is:"1" %}
+                          {% for r in p.get_roles %}
+                          <td>{{ r.name }}</td>
+                          {% endfor %}
+                          <td>{% translate "Ninguno" %}</td>
+                      {% else %}
+                          <td>{% translate "Ninguno" %}</td>
+                          <td>{% translate "Ninguno" %}</td>
+                  </tr>
+                      {% endif %}
+              {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+    <form class="row justify-content-center align-items-center" method='POST' action="{% url 'salem:sort' %}">
+    {% csrf_token %}
+        <div class="col-5 text-center">
+            <h1 class="display-6">{% translate "¿No te gustó?" %}</h1>
+        </div>
+        <div class="col-5 text-center">
+            <button class="btn btn-primary" type="submit">{% translate "Generar de nuevo distribución" %}<i class="material-symbols-outlined align-middle">navigate_next</i></button>
+        </div>
+    </form>
+
+    <div class="row">
+        <p>Corre script para determinar proporcion de jugadores</p>
+        <p>Guardar todo en db</p>
+        <p>continuar a oveerseeer initial setup</p>
+    </div>
+    <div class="row">
+        <hr class="p-0 my-3">
+        <a class="text-end fw-bolder text-reset pe-5" href="{% url 'salem:create-village' %}">{% translate "Último paso" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+        <hr class="p-0 mt-3">
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %} {% endblock %}

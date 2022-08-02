@@ -1,0 +1,58 @@
+<!-- STEP 1 in village creation:
+Displays current players that aren't in a village +
+option to add new players. -->
+
+{% extends "base_templates/salem_base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="Mafia-inspired game web setupper.
+    Type in players, roles that'll play and the system will sort the roles.">
+{% endblock %}
+
+{% block title %}{% translate "Nueva Aldea: Paso 1" %}{% endblock %}
+
+{% block styles %} {% endblock %}
+
+{% block page %}{% translate "Nueva Aldea: Paso 1" %}{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+    <h1 class="display-6">{% translate "Banco actual de jugadores" %}:</h1>
+    <div class="row row-cols-6 mb-4 gy-2">
+        {% for player in players %}
+            <div class="col">
+                <p class="lead">{{ player.name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row mb-4">
+        <h1 class="display-6">{% translate "Falta alguien? Agrégalo aquí" %}</h1>
+        <form class="row gy-2 gx-3 justify-content-center align-items-center" method='POST' action="{% url 'salem:new-game' %}">
+        {% csrf_token %}
+            <div class="col-auto">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="inputPlayer" name="newPlayer" placeholder="Nombre">
+                    <label for="inputPlayer">{% translate "Nombre Jugador" %}</label>
+                </div>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary" type="submit">{% translate "Agregar" %}</button>
+            </div>
+        </form>
+    </div>
+
+    <form class="row" method='POST' action="{% url 'salem:sort' %}">
+    {% csrf_token %}
+        <hr class="p-0 my-3">
+        <button class="btn btn-link text-end fw-bolder text-reset pe-5" type="submit">{% translate "Generar Facciones + Roles" %}<i class="material-symbols-outlined align-middle">navigate_next</i></button>
+        <hr class="p-0 mt-3">
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'village/js/test.js' %}""></script>
+{% endblock %}

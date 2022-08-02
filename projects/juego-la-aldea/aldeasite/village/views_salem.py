@@ -1,14 +1,28 @@
+from random import shuffle
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+from .ratio2 import faction_sort
+
 from .models import Faction, Role, Theme, Player
 
 factions = Faction.objects.all()
-villagers = Role.objects.filter(faction=1)
-witches = Role.objects.filter(faction=2)
-lone_wolves = Role.objects.filter(faction=3)
+roles_villagers = Role.objects.filter(faction=1)
+roles_witches = Role.objects.filter(faction=2)
+roles_lone_wolves = Role.objects.filter(faction=3)
+dict_roles = {1: roles_villagers, 2: roles_witches, 3: roles_lone_wolves}
+
+
+# Assigns faction to player
+def tag_player(qty, list, faction_id):
+    while(qty > 0):
+        id = list.pop(0)
+        p = Player.objects.get(pk=id)
+        p.faction = Faction.objects.get(pk=faction_id)
+        p.save()
+        qty -= 1
 
 
 # Create your views here.
@@ -20,6 +34,7 @@ def index(request):
             'theme': Theme.objects.filter(pk=1)})
 
 
+# Village creation: Step 1/3
 @login_required
 def new_game(request):
     if request.method == 'POST':
@@ -28,25 +43,72 @@ def new_game(request):
         return HttpResponseRedirect(reverse('salem:new-game'))
 
     return render(
-        request, 'salem/new_game.html',
+        request, 'salem/1_new_game.html',
         {
             'main_script': 'index',
             'players': Player.objects.filter(village__isnull=True)})
 
 
+# Village creation: Step 2/3
 @login_required
 def sort(request):
-    # add sort.py HERE
-    return render(request, 'salem/sort.html',)
+    players = Player.objects.filter(village__isnull=True)
+    id_list = []
+
+    if request.method == 'POST':
+        # Storing objects in list & randomizing order:
+        for player in players:
+            id_list.append(int(player.id))
+
+        shuffle(id_list)
+
+        # Uses method created in ration.py (as _) to define qty of enry faction
+        num_villagers, num_mafia, num_lone_wolves = faction_sort(len(id_list))
+
+        # Adds faction to players
+        tag_player(num_villagers, id_list, 1)
+        tag_player(num_mafia, id_list, 2)
+        tag_player(num_lone_wolves, id_list, 3)
+
+        return HttpResponseRedirect(reverse('salem:sort'))
+
+    villagers = Player.objects.filter(
+        faction__id=1).filter(village__isnull=True)
+
+    mafia = Player.objects.filter(
+        faction__id=2).filter(village__isnull=True)
+
+    lone_wolves = Player.objects.filter(
+        faction__id=3).filter(village__isnull=True)
+
+    sorted_players = {
+        'villagers': villagers,
+        'mafia': mafia,
+        'lone_wolves': lone_wolves}
+
+    return render(
+        request, 'salem/2_sort.html',
+        {
+            'main_script': "rules",
+            'sorted_players': sorted_players})
 
 
+# Village creation: Step 3/3
+def create_village(request):
+    return render(
+        request, 'salem/3_create_village.html',
+        {
+            'main_script': "rules"})
+
+
+# Documentation
 def rules(request):
     return render(
         request, 'salem/docs/rules.html',
         {
             'main_script': "rules",
             'factions': factions,
-            'dict_roles': {1: villagers, 2: witches, 3: lone_wolves}})
+            'dict_roles': dict_roles})
 
 
 def all_factions(request):
@@ -55,7 +117,7 @@ def all_factions(request):
         {
             'main_script': "factions",
             'factions': factions,
-            'dict_roles': {1: villagers, 2: witches, 3: lone_wolves}})
+            'dict_roles': dict_roles})
 
 
 def detail(request, faction_pk):
@@ -67,4 +129,4 @@ def detail(request, faction_pk):
             'main_script': "factions",
             'current_faction': current_faction,
             'factions': factions,
-            'dict_roles': {1: villagers, 2: witches, 3: lone_wolves}})
+            'dict_roles': dict_roles})
