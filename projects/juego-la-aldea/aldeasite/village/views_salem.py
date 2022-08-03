@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .ratio2 import faction_sort
+from .ratio2 import faction_sort, tag_player
 
 from .models import Faction, Role, Theme, Player
 
@@ -13,16 +13,6 @@ roles_villagers = Role.objects.filter(faction=1)
 roles_witches = Role.objects.filter(faction=2)
 roles_lone_wolves = Role.objects.filter(faction=3)
 dict_roles = {1: roles_villagers, 2: roles_witches, 3: roles_lone_wolves}
-
-
-# Assigns faction to player
-def tag_player(qty, list, faction_id):
-    while(qty > 0):
-        id = list.pop(0)
-        p = Player.objects.get(pk=id)
-        p.faction = Faction.objects.get(pk=faction_id)
-        p.save()
-        qty -= 1
 
 
 # Create your views here.
@@ -59,16 +49,24 @@ def sort(request):
         # Storing objects in list & randomizing order:
         for player in players:
             id_list.append(int(player.id))
+            player.assigned_roles.clear()
 
         shuffle(id_list)
 
-        # Uses method created in ration.py (as _) to define qty of enry faction
-        num_villagers, num_mafia, num_lone_wolves = faction_sort(len(id_list))
+        # Uses method created in ration.py to define qty of enry faction
+        vllgrs_w_role, vllgrs_no_role, vllgrs_drole, mafia_w_role, mafia_no_role, num_lone_wolves = faction_sort(len(id_list))
 
         # Adds faction to players
-        tag_player(num_villagers, id_list, 1)
-        tag_player(num_mafia, id_list, 2)
-        tag_player(num_lone_wolves, id_list, 3)
+        if vllgrs_drole:
+            tag_player(vllgrs_w_role+vllgrs_drole, id_list, 1, True)
+        else:
+            tag_player(vllgrs_w_role, id_list, 1, False)
+        if vllgrs_no_role:
+            tag_player(vllgrs_no_role, id_list, 1, False)
+        tag_player(mafia_w_role, id_list, 2, False)
+        if mafia_no_role:
+            tag_player(mafia_no_role, id_list, 2, False)
+        tag_player(num_lone_wolves, id_list, 3, False)
 
         return HttpResponseRedirect(reverse('salem:sort'))
 

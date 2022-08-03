@@ -19,9 +19,24 @@ Option to re-sort.-->
 
 {% block content %}
 <div class="container">
-    <h1 class="display-6">{% translate "Facciones" %}</h1>
-    <p>{% translate "La proporción fue generada por un algoritmo y por el momento no se puede modificar." %}</p>
+    <div class="row align-items-center">
+        <hr class="p-0 my-3">
+
+        <div class="col-6 col-lg-4">
+            <a class="fw-bolder text-reset ps-5" href="{% url 'salem:new-game' %}"><i class="material-symbols-outlined align-middle">navigate_before</i>{% translate "Agregar Jugadores" %}</a>
+        </div>
+        <div class="col-4 text-center d-none d-lg-block">
+          <h1 class="display-6 text-center">{% translate "Facciones" %}</h1>
+        </div>
+        <div class="col-6 col-lg-4 text-end">
+          <a class="fw-bolder text-reset pe-5" href="{% url 'salem:create-village' %}">{% translate "Último paso" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+        </div>
+
+        <hr class="p-0 mt-3">
+    </div>
+
     <div class="row mb-4 px-5 text-center">
+      <h1 class="display-6 text-center d-lg-none">{% translate "Facciones" %}</h1>
 
         <table class="table table-warning table-striped table-hover">
               <thead>
@@ -40,16 +55,16 @@ Option to re-sort.-->
                           <th scope="row">{{ p.name }}</th>
                           {% if p.get_roles|length_is:"2" %}
                               {% for r in p.get_roles %}
-                              <td>{{ r.name }}</td>
+                              <td>{{ r.name }} (Tier: {{ r.tier }})</td>
                               {% endfor %}
                           {% elif p.get_roles|length_is:"1" %}
                               {% for r in p.get_roles %}
-                              <td>{{ r.name }}</td>
+                              <td>{{ r.name }} (Tier: {{ r.tier }})</td>
                               {% endfor %}
-                              <td>{% translate "Ninguno" %}</td>
+                              <td>{% translate "-" %}</td>
                           {% else %}
-                              <td>{% translate "Ninguno" %}</td>
-                              <td>{% translate "Ninguno" %}</td>
+                              <td>{% translate "-" %}</td>
+                              <td>{% translate "-" %}</td>
                       </tr>
                           {% endif %}
                   {% endfor %}
@@ -71,20 +86,11 @@ Option to re-sort.-->
               {% for p in sorted_players.mafia %}
                   <tr>
                       <th scope="row">{{ p.name }}</th>
-                      {% if p.get_roles|length_is:"2" %}
-                          {% for r in p.get_roles %}
-                          <td>{{ r.name }}</td>
-                          {% endfor %}
-                      {% elif p.get_roles|length_is:"1" %}
-                          {% for r in p.get_roles %}
-                          <td>{{ r.name }}</td>
-                          {% endfor %}
-                          <td>{% translate "Ninguno" %}</td>
-                      {% else %}
-                          <td>{% translate "Ninguno" %}</td>
-                          <td>{% translate "Ninguno" %}</td>
+                      {% for r in p.get_roles %}
+                          <td>{{ r.name }} (Tier: {{ r.tier }})</td>
+                      {% endfor %}
+                      <td>{% translate "-" %}</td>
                   </tr>
-                      {% endif %}
               {% endfor %}
         </tbody>
       </table>
@@ -104,20 +110,11 @@ Option to re-sort.-->
               {% for p in sorted_players.lone_wolves %}
                   <tr>
                       <th scope="row">{{ p.name }}</th>
-                      {% if p.get_roles|length_is:"2" %}
-                          {% for r in p.get_roles %}
-                          <td>{{ r.name }}</td>
-                          {% endfor %}
-                      {% elif p.get_roles|length_is:"1" %}
-                          {% for r in p.get_roles %}
-                          <td>{{ r.name }}</td>
-                          {% endfor %}
-                          <td>{% translate "Ninguno" %}</td>
-                      {% else %}
-                          <td>{% translate "Ninguno" %}</td>
-                          <td>{% translate "Ninguno" %}</td>
+                      {% for r in p.get_roles %}
+                          <td>{{ r.name }} (Tier: {{ r.tier }})</td>
+                      {% endfor %}
+                      <td>{% translate "-" %}</td>
                   </tr>
-                      {% endif %}
               {% endfor %}
         </tbody>
         </table>
@@ -125,22 +122,24 @@ Option to re-sort.-->
 
     <form class="row justify-content-center align-items-center" method='POST' action="{% url 'salem:sort' %}">
     {% csrf_token %}
-        <div class="col-5 text-center">
-            <h1 class="display-6">{% translate "¿No te gustó?" %}</h1>
-        </div>
-        <div class="col-5 text-center">
-            <button class="btn btn-primary" type="submit">{% translate "Generar de nuevo distribución" %}<i class="material-symbols-outlined align-middle">navigate_next</i></button>
+        <div class="col text-center">
+            <p class="lead"><strong>{% translate "La proporción fue generada por un algoritmo y por el momento no se puede modificar manualmente." %}</strong>
+                <span class="text-muted">{% translate "¿No te gustó?" %}</span>
+            </p>
+            <button class="btn btn-primary" type="submit">{% translate "Generar nueva distribución" %}<i class="material-symbols-outlined align-middle ms-2">restart_alt</i></button>
         </div>
     </form>
 
     <div class="row">
-        <p>Corre script para determinar proporcion de jugadores</p>
-        <p>Guardar todo en db</p>
-        <p>continuar a oveerseeer initial setup</p>
-    </div>
-    <div class="row">
         <hr class="p-0 my-3">
-        <a class="text-end fw-bolder text-reset pe-5" href="{% url 'salem:create-village' %}">{% translate "Último paso" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+
+        <div class="col-6">
+            <a class="fw-bolder text-reset ps-5" href="{% url 'salem:new-game' %}"><i class="material-symbols-outlined align-middle">navigate_before</i>{% translate "Agregar Jugadores" %}</a>
+        </div>
+        <div class="col-6 text-end">
+            <a class="fw-bolder text-reset pe-5" href="{% url 'salem:create-village' %}">{% translate "Último paso" %}<i class="material-symbols-outlined align-middle">navigate_next</i></a>
+        </div>
+
         <hr class="p-0 mt-3">
     </div>
 </div>

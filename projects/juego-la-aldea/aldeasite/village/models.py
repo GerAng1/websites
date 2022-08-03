@@ -37,6 +37,9 @@ class Role(models.Model):
     def __str__(self):
         return self.name
 
+    def is_low_tier(self):
+        return self.tier > 2
+
 
 class Village(models.Model):
     name = models.CharField('Name', max_length=100)
