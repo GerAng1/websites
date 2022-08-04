@@ -1,0 +1,95 @@
+<!-- OVERVIEW: Displays villages assocciated with logged user. -->
+
+{% extends "base_templates/salem_base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta name="description" content="Mafia-inspired game web setupper.
+    Type in players, roles that'll play and the system will sort the roles.">
+{% endblock %}
+
+{% block title %}{% translate "Tus Aldeas" %}{% endblock %}
+
+{% block styles %} {% endblock %}
+
+{% block page %}{% translate "Tus Aldeas" %}{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+    <h1 class="display-6">{% translate "Tus Aldeas" %}:</h1>
+    {% for v in data %}
+        <div class="row mb-5">
+            <h3 class="">
+                {{ v.village.name }}.
+                <span class="text-muted">
+                    {% translate "Creado el" %}: {{ v.village.date_created }} ({{ v.village.theme }})
+                </span>
+              </h3>
+            <h4>{% translate "Estatus" %}:
+              <span class="text-muted">{{ v.village.status }}</span>
+            </h4>
+
+            <div class="col-12 col-md-6 align-self-center">
+                <h4 class="text-center">{% translate "Aldeanos" %}</h4>
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        {% for p in v.villagers %}
+                            <p>{{ p.name }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="col-4">
+                        {% for p in v.villagers %}
+                            <p>
+                              {% for r in p.assigned_roles.all %}
+                                  {{ r.name }};
+                              {% endfor %}
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 align-self-center">
+                <h4 class="text-center">{% translate "Brujas" %}</h4>
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        {% for p in v.mafia %}
+                            <p>{{ p.name }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="col-4">
+                        {% for p in v.mafia %}
+                            <p>
+                              {% for r in p.assigned_roles.all %}
+                                  {{ r.name }};
+                              {% endfor %}
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <h4 class="text-center">{% translate "Solitarios" %}</h4>
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        {% for p in v.lone_wolves %}
+                            <p>{{ p.name }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="col-4">
+                        {% for p in v.lone_wolves %}
+                            <p>
+                              {% for r in p.assigned_roles.all %}
+                                  {{ r.name }};
+                              {% endfor %}
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block scripts %} {% endblock %}

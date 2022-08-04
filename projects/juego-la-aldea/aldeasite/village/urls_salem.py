@@ -7,6 +7,7 @@ urlpatterns = [
     path('new-game', views_salem.new_game, name='new-game'),
     path('new-game/sort', views_salem.sort, name='sort'),
     path('new-game/create', views_salem.create_village, name='create-village'),
+    path('village-overview/', views_salem.overview, name='overview'),
     # path('edit/', views.edit, name='edit'),
     # path('recap/', views.recap, name='recap'),
     path('docs/', views_salem.rules, name='rules'),

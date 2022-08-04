@@ -41,6 +41,17 @@
                                         {% translate "Nueva Aldea" %}
                                       </a>
                             </li>
+                            {% if user.is_authenticated %}
+                                {% if main_script == 'my-villages' %}
+                                    <a href="{% url 'salem:overview' %}" class="nav-link text-secondary">
+                                        <img class="d-block mx-auto" src="{% static 'village/logos/villagesecondary.png'%}" width="24" height="24" alt="Village Logo">
+                                {% else %}
+                                    <a href="{% url 'salem:overview' %}" class="nav-link text-white">
+                                        <img class="d-block mx-auto" src="{% static 'village/logos/villagewhite.png'%}" width="24" height="24" alt="Village Logo">
+                                {% endif %}
+                                      {% translate "Mis Aldeas" %}
+                                    </a>
+                            {% endif %}
                             <li>
                                 {% if main_script == 'rules' %}
                                     <a href="{% url 'salem:rules' %}" class="nav-link text-secondary">

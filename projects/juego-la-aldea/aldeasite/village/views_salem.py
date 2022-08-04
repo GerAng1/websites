@@ -6,7 +6,7 @@ from django.urls import reverse
 
 from .ratio2 import faction_sort, tag_player
 
-from .models import Faction, Role, Theme, Player
+from .models import Faction, Role, Theme, Player, Village
 
 factions = Faction.objects.all()
 roles_villagers = Role.objects.filter(faction=1)
@@ -92,11 +92,57 @@ def sort(request):
 
 
 # Village creation: Step 3/3
+@login_required
 def create_village(request):
     return render(
         request, 'salem/3_create_village.html',
         {
             'main_script': "rules"})
+
+
+@login_required
+def overview(request):
+    players = Player.objects.filter(village__isnull=True)
+
+    if request.method == 'POST':
+        new_village = request.POST.get('newVillage')
+        v = Village(
+            name=new_village,
+            theme=Theme.objects.get(pk=1),
+            overseer=request.user)
+
+        v.save()
+
+        for p in players:
+            p.village = v
+            p.save()
+
+        return HttpResponseRedirect(reverse('salem:overview'))
+
+    # A list of dictionaries in which each dictionary is a village w info
+    villages_data = []
+    villages = Village.objects.filter(overseer=request.user)
+
+    for v in villages:
+        data = {}
+        data["village"] = v
+        villagers = Player.objects.filter(
+            faction__id=1).filter(village=v)
+        mafia = Player.objects.filter(
+            faction__id=2).filter(village=v)
+        lone_wolves = Player.objects.filter(
+            faction__id=3).filter(village=v)
+        data["villagers"] = villagers
+        data["mafia"] = mafia
+        data["lone_wolves"] = lone_wolves
+
+        villages_data.append(data)
+
+    return render(
+        request, 'salem/overview.html',
+        {
+            'main_script': 'my-villages',
+            'data': villages_data})
 
 
 # Documentation

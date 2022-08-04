@@ -19,11 +19,18 @@ Names Village, assigns it to current user & assigns everyone to it.-->
 {% block content %}
 <div class="container mb-5">
     <h1 class="display-6">{% translate "Dale un nombre a tu Aldea" %}:</h1>
-    <div class="row mb-4">
-      <p>Corre script para determinar proporcion de jugadores</p>
-      <p>Guardar todo en db</p>
-      <p>continuar a oveerseeer initial setup</p>
-    </div>
+    <form class="row gy-2 gx-3 justify-content-center align-items-center" method='POST' action="{% url 'salem:overview' %}">
+    {% csrf_token %}
+        <div class="col-auto">
+            <div class="form-floating">
+                <input type="text" class="form-control form-control-lg" id="inputVillage" name="newVillage" placeholder="Aldea">
+                <label for="inputVillage">{% translate "Nombre Aldea" %}</label>
+            </div>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" type="submit">{% translate "Agregar" %}</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
 
