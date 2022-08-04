@@ -46,7 +46,7 @@ class Village(models.Model):
     status = models.TextField("Status", default="About to begin.")
     theme = models.ForeignKey(
         Theme, on_delete=models.CASCADE)
-    date_created = models.DateField()
+    date_created = models.DateField(auto_now_add=True)
     overseer = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
 
