@@ -1,0 +1,8 @@
+.btn-pill {
+  --bs-btn-font-weight: 600;
+  --bs-btn-bg: GhostWhite;
+  --bs-btn-border-color: GhostWhite;
+  --bs-btn-disabled-bg: GhostWhite;
+  --bs-btn-disabled-border-color: GhostWhite;8ca;
+  --bs-btn-border-radius: 2rem;
+}
