@@ -38,13 +38,23 @@
                     </button>
                 </div>
                 <div class="carousel-cell">
-                  <img src="{% static 'village/media/nineties.jpg'%}" class="w-100" id="brad" alt="Nineties Theme">
-                  <button id="themeBtn2" type="button" class="btn btn-dark btn-lg start-50 translate-middle-x" data-bs-toggle="button" onclick="themeSelector('90s', 2)">
-                    {% translate "Aldea 90s" %}
-                  </button>
+                    <img src="{% static 'village/media/nineties.jpg'%}" class="w-100" id="brad" alt="Nineties Theme">
+                    <div class="img-label">
+                        <div class="pt-2" style="transform: skewY(45deg) rotate(-45deg);">
+                          {% translate "En desarrollo" %}
+                        </div>
+                    </div>
+                    <button id="themeBtn2" type="button" class="btn btn-dark btn-lg start-50 translate-middle-x" data-bs-toggle="button" onclick="themeSelector('90s', 2)">
+                      {% translate "Aldea 90s" %}
+                    </button>
                 </div>
                 <div class="carousel-cell">
                     <img src="{% static 'village/media/tokyo.jpg'%}" class="w-100" alt="Tokyo 3042 Theme">
+                    <div class="img-label">
+                        <div class="pt-2" style="transform: skewY(45deg) rotate(-45deg);">
+                          {% translate "En desarrollo" %}
+                        </div>
+                    </div>
                     <button id="themeBtn3" type="button" class="btn btn-dark btn-lg start-50 translate-middle-x" data-bs-toggle="button" onclick="themeSelector('Tokyo 3042', 3)">
                         {% translate "Aldea Tokyo 3042" %}
                     </button>
