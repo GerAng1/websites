@@ -24,33 +24,42 @@
                 {% for role in roles %}
 
                 <hr>
-                <div class="container mx-auto px-4 my-4" id="{{ current_faction.name }}-{{ role.id }}">
-                    <div class="row">
-                        <h2>{{ role.name }} <span>{{ role.symbol }}</span></h2>
-                    </div>
-                    <div class="row justify-content-center px-2">
-                        <div class="col">
-                            <p>{{ role.tier }}</p>
-                            <p>{{ role.descr }}</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3 justify-content-between px-2">
-                        {% if role.notes %}
-                        <div class="col-12 col-md-6">
-                            <h4>{% translate "Notas" %}</h4>
-                            <p>{{ role.notes }}</p>
-                        </div>
-                        {% endif %}
 
-                        {% if role.tips %}
-                        <div class="col-12 col-md-6">
-                            <h4>{% translate "Tips" %}</h4>
-                            <p>{{ role.tips }}</p>
+
+                <div class="container mx-auto px-4 my-4" id="{{ current_faction.name }}-{{ role.id }}">
+                    <div class="row justify-content-center">
+
+                        <div class="card" style="max-width: 740px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="..." class="img-fluid rounded-start" alt="Dibujo Personaje">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{ role.name }} <span>({{ role.tier }} Tier)</span></h4>
+                                        <p class="card-text">{{ role.descr }}</p>
+                                        <div class="row mb-3 justify-content-between">
+                                            {% if role.notes %}
+                                            <div class="col-12 col-md-6">
+                                                <h4>{% translate "Notas" %}</h4>
+                                                <p>{{ role.notes }}</p>
+                                            </div>
+                                            {% endif %}
+                                            
+                                            {% if role.tips %}
+                                            <div class="col-12 col-md-6">
+                                                <h4>{% translate "Tips" %}</h4>
+                                                <p>{{ role.tips }}</p>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        {% endif %}
+                        
                     </div>
                 </div>
-
 
                 {% endfor %}
             {% endif %}

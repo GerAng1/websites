@@ -20,6 +20,7 @@ option to add new players. -->
 {% block content %}
 <div class="container mb-5">
     <h1 class="display-6">{% translate "Banco actual de jugadores" %}:</h1>
+    {% if players %}
     <div class="row row-cols-6 mb-4 gy-2">
         {% for player in players %}
             <div class="col">
@@ -27,6 +28,10 @@ option to add new players. -->
             </div>
         {% endfor %}
     </div>
+    {% endif %}
+    {% if not players %}
+    <p class="lead">Lista vacía!</p>
+    {% endif %}
 
     <div class="row mb-4">
         <h1 class="display-6">{% translate "Falta alguien? Agrégalo aquí" %}</h1>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'village/css/docs.css' %}">
 {% endblock %}
 
-{% block page %}{% translate "Docs" %}{% endblock %}
+<!-- {% block page %} {% endblock %} -->
 
 {% block content %}
     <div class="container-fluid">
@@ -19,7 +19,6 @@
 
                     <li>
 
-                    <!-- FOR LOOP HERE -->
                         <a class="ps-3" href="#">{% translate "Facciones" %}</a>
                         <ul class="list-unstyled small">
 
@@ -40,7 +39,6 @@
             </div>
 
             <div class="col-12 col-md-10 content">
-
                 {% block container %}
 
                     <h1>This is written in the base_docs.html</h1>

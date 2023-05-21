@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .ratio2 import faction_sort, tag_player
+from .ratio import faction_sort, tag_player
 
 from .models import Faction, Role, Theme, Player, Village
 
@@ -14,9 +14,24 @@ roles_witches = Role.objects.filter(faction=2)
 roles_lone_wolves = Role.objects.filter(faction=3)
 dict_roles = {1: roles_villagers, 2: roles_witches, 3: roles_lone_wolves}
 
+tier_selector = {
+    1: 'S',
+    2: 'A',
+    3: 'B',
+    4: 'C',
+    5: 'D'
+}
+
+# Small step that replaces tier number with letter
+for key, roles in dict_roles.items():
+    for role in roles:
+        if role.tier in tier_selector:
+            role.tier = tier_selector[role.tier]
+
 
 # Create your views here.
 def index(request):
+    """Home page renderer."""
     return render(
         request, 'salem/index.html',
         {
@@ -27,6 +42,7 @@ def index(request):
 # Village creation: Step 1/3
 @login_required
 def new_game(request):
+    """Add players to bank."""
     if request.method == 'POST':
         new_player = request.POST.get('newPlayer')
         Player(name=new_player).save()
@@ -42,6 +58,7 @@ def new_game(request):
 # Village creation: Step 2/3
 @login_required
 def sort(request):
+    """Sorts players into factions using created algorithm."""
     players = Player.objects.filter(village__isnull=True)
     id_list = []
 
@@ -53,7 +70,7 @@ def sort(request):
 
         shuffle(id_list)
 
-        # Uses method created in ration.py to define qty of enry faction
+        # Uses method created in ratio.py to define qty of enry faction
         vllgrs_w_role, vllgrs_no_role, vllgrs_drole, mafia_w_role, mafia_no_role, num_lone_wolves = faction_sort(len(id_list))
 
         # Adds faction to players
@@ -147,6 +164,7 @@ def overview(request):
 
 # Documentation
 def rules(request):
+    """"Goes over the rules of this theme."""
     return render(
         request, 'salem/docs/rules.html',
         {
@@ -156,6 +174,7 @@ def rules(request):
 
 
 def all_factions(request):
+    """Loops over all faction and displays descriptions."""
     return render(
         request, 'salem/docs/factions.html',
         {
@@ -165,6 +184,7 @@ def all_factions(request):
 
 
 def detail(request, faction_pk):
+    """Loops over all characters and displays their details."""
     current_faction = get_object_or_404(Faction, pk=faction_pk)
 
     return render(

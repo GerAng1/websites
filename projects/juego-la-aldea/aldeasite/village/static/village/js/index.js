@@ -25,7 +25,7 @@ const themeSelector = (theme, btn) => {
     }
 
     if (selected) {
-        document.getElementById("beginBtn").innerHTML = `Crea Nueva Aldea ${theme}`;
+        document.getElementById("beginBtn").innerHTML = `Ir a Temática ${theme}`;
         document.getElementById("beginBtn").classList.remove("btn-dark");
         document.getElementById("beginBtn").classList.remove("disabled");
         document.getElementById("beginBtn").classList.add("btn-primary");
