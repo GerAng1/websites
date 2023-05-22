@@ -7,5 +7,6 @@ __pycache__
 # For DJANGO PROJECT
 # Ignore venv
 .envaldea
+.env2aldea
 
 projects/juego-la-aldea/aldeasite/aldeasite/settings.py
